@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Vector2.h"
-#include"Color.h"
-#include "Renderer.h"
-#include "Transform.h"
+#include "../Math/Vector2.h"
+#include "../Renderer/Color.h"
+#include "../Renderer/Renderer.h"
+#include "../Math/Transform.h"
 
 #include <vector>
 

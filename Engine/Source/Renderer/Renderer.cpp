@@ -104,10 +104,10 @@ void Renderer::DrawRect(float x, float y, float w, float h)
 }
 
 //add draw circle
-void Renderer::DrawCircle(float x, float y, float r)
-{
-	for (int i = 0; i < 12.566 * r; i++)
-	{
-		SDL_RenderDrawPoint(m_renderer, r * cos(12.566f * r / i), r * sin(12.566f * r / i));
-	}
-}
+//void Renderer::DrawCircle(float x, float y, float r)
+//{
+//	for (int i = 0; i < 12.566 * r; i++)
+//	{
+//		SDL_RenderDrawPoint(m_renderer, r * cos(12.566f * r / i), r * sin(12.566f * r / i));
+//	}
+//}

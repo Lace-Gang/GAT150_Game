@@ -1,24 +1,38 @@
 #pragma once
 
-#include "Renderer.h" 
-#include "Input.h"
-#include "Audio.h"
+// ** core **
+#include "Core/EAssert.h"
+#include "Core/ETimer.h"
+#include "Core/EFile.h"
+//#include "ETimer.h"
 
-#include "Vector2.h"
-#include "Particle.h"
-#include "ParticleSystem.h"
-#include "Model.h"
+// ** systems **
+//renderer
+#include "Renderer/Renderer.h" 
+#include "Renderer/Particle.h"
+#include "Renderer/ParticleSystem.h"
+//I think I need text and font here too . . . . Maybe(?)
+#include "Renderer/Model.h"
+//#include "Renderer/Color.h"
+//input
+#include "Input/Input.h"
+//audio
+#include "Audio/Audio.h"
 
-#include "Random.h"
-#include "ETimer.h"
-#include "Color.h"
-#include "MathUtils.h"
-#include "Transform.h"
-#include "ETimer.h"
+// ** math **
+#include "Math/Vector2.h"
+#include "Math/Random.h"
+#include "Math/MathUtils.h"
+#include "Math/Transform.h"
+
+// **framework **
+#include "Framework/Actor.h"
+#include "Framework/Scene.h"
 
 #include <SDL.h>
 #include <fmod.hpp>
 #include <memory>
+#include <cassert>
 
 
 class Engine
@@ -52,4 +66,13 @@ private:
 };
 
 
-extern Engine g_engine; 
+//extern Engine g_engine; extern states that this is not the definition
+
+
+//framework   actor
+
+//renderer   particles particles systems
+
+//math  vector2, (mathutils?)
+
+//engine and enginecpp stay in the root folder

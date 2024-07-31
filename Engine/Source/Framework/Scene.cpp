@@ -1,9 +1,9 @@
 #include "Scene.h"
 #include "Actor.h"
-#include "Model.h"
-#include "Engine.h"
-#include "Particle.h"
-#include "Color.h"
+#include "../Renderer/Model.h"
+#include "../Engine.h"
+#include "../Renderer/Particle.h"
+#include "../Renderer/Color.h"
 
 #include<algorithm> //for remove_if
 

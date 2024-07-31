@@ -19,34 +19,37 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\Actor.h" />
-    <ClInclude Include="Source\Audio.h" />
-    <ClInclude Include="Source\Color.h" />
+    <ClInclude Include="Source\Audio\Audio.h" />
+    <ClInclude Include="Source\Core\EAssert.h" />
+    <ClInclude Include="Source\Core\ETimer.h" />
     <ClInclude Include="Source\Engine.h" />
+    <ClInclude Include="Source\Framework\Actor.h" />
+    <ClInclude Include="Source\Framework\Scene.h" />
     <ClInclude Include="Source\Game.h" />
-    <ClInclude Include="Source\Input.h" />
-    <ClInclude Include="Source\MathUtils.h" />
-    <ClInclude Include="Source\Model.h" />
-    <ClInclude Include="Source\Particle.h" />
-    <ClInclude Include="Source\ParticleSystem.h" />
-    <ClInclude Include="Source\Random.h" />
-    <ClInclude Include="Source\Renderer.h" />
-    <ClInclude Include="Source\ETimer.h" />
-    <ClInclude Include="Source\Scene.h" />
-    <ClInclude Include="Source\Transform.h" />
-    <ClInclude Include="Source\Vector2.h" />
+    <ClInclude Include="Source\Input\Input.h" />
+    <ClInclude Include="Source\Math\MathUtils.h" />
+    <ClInclude Include="Source\Math\Random.h" />
+    <ClInclude Include="Source\Math\Transform.h" />
+    <ClInclude Include="Source\Math\Vector2.h" />
+    <ClInclude Include="Source\Renderer\Color.h" />
+    <ClInclude Include="Source\Renderer\Model.h" />
+    <ClInclude Include="Source\Renderer\Particle.h" />
+    <ClInclude Include="Source\Renderer\ParticleSystem.h" />
+    <ClInclude Include="Source\Renderer\Renderer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source\Actor.cpp" />
-    <ClCompile Include="Source\Audio.cpp" />
+    <ClCompile Include="Source\Audio\Audio.cpp" />
+    <ClCompile Include="Source\Core\EAssert.cpp" />
+    <ClCompile Include="Source\Core\EFile.cpp" />
+    <ClCompile Include="Source\Core\ETimer.cpp" />
     <ClCompile Include="Source\Engine.cpp" />
-    <ClCompile Include="Source\ETimer.cpp" />
-    <ClCompile Include="Source\Input.cpp" />
-    <ClCompile Include="Source\Model.cpp" />
-    <ClCompile Include="Source\Particle.cpp" />
-    <ClCompile Include="Source\ParticleSystem.cpp" />
-    <ClCompile Include="Source\Renderer.cpp" />
-    <ClCompile Include="Source\Scene.cpp" />
+    <ClCompile Include="Source\Framework\Actor.cpp" />
+    <ClCompile Include="Source\Framework\Scene.cpp" />
+    <ClCompile Include="Source\Input\Input.cpp" />
+    <ClCompile Include="Source\Renderer\Model.cpp" />
+    <ClCompile Include="Source\Renderer\Particle.cpp" />
+    <ClCompile Include="Source\Renderer\ParticleSystem.cpp" />
+    <ClCompile Include="Source\Renderer\Renderer.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

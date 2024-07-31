@@ -1,12 +1,13 @@
 #include "Actor.h"
-#include "Model.h" 
+#include "../Renderer/Model.h" 
 
 void Actor::Update(float dt)
 {
 	//check for lifespan
 	if (m_lifespan != 0)
 	{
-		m_lifespan - dt;
+		m_lifespan -= dt;
+		//m_lifespan - dt;
 		if (m_lifespan <= 0)
 		{
 			m_destroyed = true;
