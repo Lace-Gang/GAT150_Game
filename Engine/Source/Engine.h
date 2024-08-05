@@ -25,9 +25,13 @@
 #include "Math/MathUtils.h"
 #include "Math/Transform.h"
 
-// **framework **
+// ** framework **
 #include "Framework/Actor.h"
 #include "Framework/Scene.h"
+
+// ** Resources **
+#include "Resources/Resource.h"
+#include "Resources/ResourceManager.h"
 
 #include <SDL.h>
 #include <fmod.hpp>

@@ -3,6 +3,7 @@
 #include <string>
 #include <SDL_ttf.h>
 
+class Texture;
 
 class Renderer
 {
@@ -25,10 +26,14 @@ public:
 	void DrawRect(float x, float y, float w, float h);
 	void DrawCircle(float x, float y, float r);
 
+	void DrawTexture(Texture* texture, float x, float y, float angle = 0.0f);
+
+
 	int GetWidth() const { return m_width; }
 	int GetHeight() const { return m_height; }
 
 	friend class Text;
+	friend class Texture;
 private:
 	SDL_Window* m_window{ nullptr }; 
 	SDL_Renderer* m_renderer{ nullptr };

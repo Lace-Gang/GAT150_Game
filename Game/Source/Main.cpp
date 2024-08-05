@@ -5,6 +5,8 @@
 #include "Framework/Scene.h"
 #include "Framework/Actor.h"
 
+#include "Renderer/Texture.h"
+
 
 
 
@@ -24,9 +26,20 @@ int main(int argc, char* argv[])
 
 	engine->Initialize();
 
+	//ResourceManager rm = ResourceManager();
 
-	File::SetFilePath("..\Build\Assets");
+	File::SetFilePath("Assets");
 	std::cout << File::GetFilePath() << std::endl;
+
+	// create texture, using shared_ptr so texture can be shared
+
+
+	res_t<Texture> texture = ResourceManager::Instance().Get<Texture>("changeMyMindMeme.jpg", engine->GetRenderer()); 	//////res_t<Texture> texture2 = rm.Get<Texture>("changeMyMindMeme.jpg", engine->GetRenderer());
+
+
+	//texture->Load("changeMyMindMeme.jpg", engine->GetRenderer());
+
+
 
 
 	while (!engine->IsQuit())
@@ -45,6 +58,7 @@ int main(int argc, char* argv[])
 		engine->GetRenderer().BeginFrame();
 
 		//engine->GetPS().Draw(engine->GetRenderer());
+		engine->GetRenderer().DrawTexture(texture.get(), 30, 30);
 
 		engine->GetRenderer().EndFrame();
 
