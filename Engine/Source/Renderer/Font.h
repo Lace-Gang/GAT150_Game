@@ -5,7 +5,7 @@
 #include<string>
 #include <SDL_ttf.h>
 
-class Font : Resource
+class Font : public Resource
 {
 public:
 	Font() = default;

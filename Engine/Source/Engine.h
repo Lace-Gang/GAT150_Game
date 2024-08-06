@@ -33,6 +33,9 @@
 #include "Resources/Resource.h"
 #include "Resources/ResourceManager.h"
 
+// ** Components **
+#include "Components/TextureComponent.h" //texture component includes rendercomponent and component so it's three for one
+
 #include <SDL.h>
 #include <fmod.hpp>
 #include <memory>
