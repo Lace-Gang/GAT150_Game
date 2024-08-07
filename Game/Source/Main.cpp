@@ -7,7 +7,7 @@
 
 #include "Renderer/Texture.h"
 #include "Renderer/Font.h"
-
+#include "Renderer/Text.h"
 
 
 
@@ -15,7 +15,7 @@
 #include <cstdlib>
 #include <vector>
 #include<cassert> //modern. the older one was assert.h but c++ is moving away from having .h in includes
-#include <Renderer/Text.h>
+//#include <Renderer/Text.h>
 
 
 
@@ -30,15 +30,52 @@ int main(int argc, char* argv[])
 
 	//ResourceManager rm = ResourceManager();
 
+	//build is the working deirectory (where we "start" when the program runs.) Below we move to the assets folder
 	File::SetFilePath("Assets");
 	std::cout << File::GetFilePath() << std::endl;
+
+	//testing the file reading
+	std::string s;
+	File::ReadFile("Texts/text.txt", s);
+	std::cout << s << std::endl;
+
+	rapidjson::Document document;
+	Json::Load("Texts/text.txt", document);
+
+	std::string name;
+	int age;
+	bool isDormant;
+
+	
+
+	//how to get specific data points from json 
+	Json::Read(document, "age", age);
+	Json::Read(document, "name", name);
+	Json::Read(document, "isDormant", isDormant);
+
+	std::cout << age << std::endl;
+	std::cout << name << std::endl;
+	std::cout << isDormant << std::endl;
+
+	
+	//another way to do it
+	name = "null";
+	age = 0;
+	isDormant = true;
+
+	READ_DATA(document, isDormant);
+	READ_DATA(document, name);
+	READ_DATA(document, age);
+	std::cout << age << std::endl;
+	std::cout << name << std::endl;
+	std::cout << isDormant << std::endl;
 
 	{
 
 		// create texture, using shared_ptr so texture can be shared
-		res_t<Texture> texture = ResourceManager::Instance().Get<Texture>("changeMyMindMeme.jpg", engine->GetRenderer()); 	//////res_t<Texture> texture2 = rm.Get<Texture>("changeMyMindMeme.jpg", engine->GetRenderer());
+		res_t<Texture> texture = ResourceManager::Instance().Get<Texture>("Images/changeMyMindMeme.jpg", engine->GetRenderer()); 	//////res_t<Texture> texture2 = rm.Get<Texture>("changeMyMindMeme.jpg", engine->GetRenderer());
 		//texture->Load("changeMyMindMeme.jpg", engine->GetRenderer());
-		res_t<Font> font = ResourceManager::Instance().Get<Font>("homespun.ttf", 20);
+		res_t<Font> font = ResourceManager::Instance().Get<Font>("Fonts/homespun.ttf", 20);
 		Text* text = new Text(font.get());
 		text->Create(engine->GetRenderer(), "Hello!", Color{ 1, 1, 1, 1 });
 

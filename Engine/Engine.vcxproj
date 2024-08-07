@@ -24,7 +24,9 @@
     <ClInclude Include="Source\Components\RenderComponent.h" />
     <ClInclude Include="Source\Components\TextureComponent.h" />
     <ClInclude Include="Source\Core\EAssert.h" />
+    <ClInclude Include="Source\Core\EFile.h" />
     <ClInclude Include="Source\Core\ETimer.h" />
+    <ClInclude Include="Source\Core\Json.h" />
     <ClInclude Include="Source\Core\Singleton.h" />
     <ClInclude Include="Source\Engine.h" />
     <ClInclude Include="Source\Framework\Actor.h" />
@@ -53,6 +55,7 @@
     <ClCompile Include="Source\Core\EAssert.cpp" />
     <ClCompile Include="Source\Core\EFile.cpp" />
     <ClCompile Include="Source\Core\ETimer.cpp" />
+    <ClCompile Include="Source\Core\Json.cpp" />
     <ClCompile Include="Source\Engine.cpp" />
     <ClCompile Include="Source\Framework\Actor.cpp" />
     <ClCompile Include="Source\Framework\Scene.cpp" />
@@ -64,6 +67,9 @@
     <ClCompile Include="Source\Renderer\Renderer.cpp" />
     <ClCompile Include="Source\Renderer\Text.cpp" />
     <ClCompile Include="Source\Renderer\Texture.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Build\Assets\Texts\text.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
@@ -141,7 +147,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\include;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\include;$(ProjectDir)Source;$(SolutionDir)ThirdParty\rapidjson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -164,7 +170,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\include;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\include;$(ProjectDir)Source;$(SolutionDir)ThirdParty\rapidjson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -187,7 +193,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\include;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\include;$(ProjectDir)Source;$(SolutionDir)ThirdParty\rapidjson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
@@ -210,7 +216,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\include;$(ProjectDir)Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)ThirdParty\SDL2\include;$(ProjectDir)Source;$(SolutionDir)ThirdParty\rapidjson\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
