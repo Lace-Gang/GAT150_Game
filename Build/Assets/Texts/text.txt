@@ -1,9 +1,16 @@
 {
-   "name":"Tyler",
+   "name":"Lace",
    "age":19,
-   "isDormant":false,
+   "speed": 17.6,
+   "isAwake":false,
    "position":[
       9,
       17
+   ],
+   "color":[
+      0.5,
+      0.2,
+      0.6,
+      0.0
    ]
 }

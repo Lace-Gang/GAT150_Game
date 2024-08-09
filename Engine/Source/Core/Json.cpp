@@ -1,8 +1,11 @@
 #include "Json.h"
 
 #include "EFile.h"
+#include "./Math/Vector2.h"
+
 #include<rapidjson/istreamwrapper.h>
 #include<iostream>
+
 
 namespace Json
 {
@@ -75,5 +78,107 @@ namespace Json
         return true;
     }
 
+    bool Read(const rapidjson::Value& value, const std::string& name, float& data)
+    {
 
+        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsFloat())
+        {
+            std::cerr << "Could Not Read Json Value: " << name << std::endl;
+
+            return false;
+        }
+
+        data = value[name.c_str()].GetFloat();
+
+        return true;
+    }
+
+    //bool Read(const rapidjson::Value& value, const std::string& name, Vector2& data)
+    //{
+
+      //  if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsString())
+      //  {
+      //      std::cerr << "Could Not Read Json Value: " << name << std::endl;
+      //
+      //      return false;
+      //  }
+      //
+      //  if (value[name.c_str()][0].IsFloat())
+      //  {
+      //      data.x = value[name.c_str()][0].GetFloat();
+      //  }
+      //  else
+      //  {
+      //      data.y = value[name.c_str()][0].GetInt();
+      //  }
+      //
+      //  if (value[name.c_str()][1].IsFloat())
+      //  {
+      //      data.x = value[name.c_str()][1].GetFloat();
+      //  }
+      //  else
+      //  {
+      //      data.y = value[name.c_str()][1].GetInt();
+      //  }
+        
+
+        //return true;
+    //}
+
+
+    bool Read(const rapidjson::Value& value, const std::string& name, Vector2& data)
+    {
+        // check if the value has the "<name>" and is an array with 2 elements
+        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 2)
+        {
+            std::cerr << "Could not read Json value: " << name << std::endl;
+            return false;
+        }
+    
+        // get json array object
+        auto& array = value[name.c_str()];
+        // get array values
+        for (rapidjson::SizeType i = 0; i < array.Size(); i++)
+        {
+            if (!array[i].IsNumber())
+            {
+                std::cerr << "Could not read Json value: " << name << std::endl;
+                return false;
+            }
+    
+            // get the data
+            data[i] = array[i].GetFloat();
+        }
+    
+        return true;
+    }
+
+
+
+    bool Read(const rapidjson::Value& value, const std::string& name, class Color& data)
+    {
+        // check if the value has the "<name>" and is an array with 2 elements
+        if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 4)
+        {
+            std::cerr << "Could not read Json value: " << name << std::endl;
+            return false;
+        }
+
+        // get json array object
+        auto& array = value[name.c_str()];
+        // get array values
+        for (rapidjson::SizeType i = 0; i < array.Size(); i++)
+        {
+            if (!array[i].IsNumber())
+            {
+                std::cerr << "Could not read Json value: " << name << std::endl;
+                return false;
+            }
+
+            // get the data
+            data[i] = array[i].GetFloat();
+        }
+
+        return true;
+    }
 }

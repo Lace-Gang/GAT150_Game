@@ -25,6 +25,8 @@ public:
 	//	//m_model{ model }
 	//{}
 
+	CLASS_DECLARATION(Actor)
+
 	void Initialize() override;
 	virtual void Update(float dt);
 	void Draw(Renderer& renderer);
@@ -35,6 +37,7 @@ public:
 	void SetLifespan(float lifespan) { m_lifespan = lifespan; }
 
 	const Transform& GetTransform() { return m_transform; }
+	void SetTransform(Transform& transform) { m_transform = transform; }
 
 	void SetTag(const std::string& tag) { m_tag = tag; }
 	const std::string& GetTag() { return m_tag; }

@@ -1,5 +1,8 @@
 #pragma once
 
+#include "./Math/Vector2.h"
+#include "./Renderer/Color.h"
+
 #include<rapidjson/document.h>
 #include<string>
 
@@ -16,6 +19,9 @@ namespace Json
 	bool Read(const rapidjson::Value& value, const std::string& name, int& data); //declarations don't technically NEED names, but it's good form
 	bool Read(const rapidjson::Value& value, const std::string& name, bool& data);
 	bool Read(const rapidjson::Value& value, const std::string& name, std::string &data);
+	bool Read(const rapidjson::Value& value, const std::string& name, float& data);
+	bool Read(const rapidjson::Value& value, const std::string& name, Vector2& data);
+	bool Read(const rapidjson::Value& value, const std::string& name, class Color& data);
 	//maybe try to add a Read typename in later?
 
 }
