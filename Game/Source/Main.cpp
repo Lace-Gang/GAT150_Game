@@ -53,31 +53,7 @@ int main(int argc, char* argv[])
 
 	
 
-	////how to get specific data points from json 
-	//Json::Read(document, "age", age);
-	//Json::Read(document, "name", name);
-	//Json::Read(document, "isDormant", isDormant);
-	//Json::Read(document, "position", position);
-	//Json::Read(document, "color", color);
-	//
-	//std::cout << age << std::endl;
-	//std::cout << name << std::endl;
-	//std::cout << isAwake << std::endl;
-	//std::cout << "[" << position.x << ", " << position.y << "]" << std::endl;
-	//std::cout << "[" << color.r << ", " << color.g << color.b << ", " << color.a << "]" << std::endl;
-	//
-	
-	////another way to do it
-	//name = "null";
-	//age = 0;
-	//isAwake = true;
-	//position.x = 0;
-	//position.y = 0;
-	//color.r = 0;
-	//color.g = 0;
-	//color.b = 0;
-	//color.a = 0.5;
-	
+
 	READ_DATA(document, isAwake);
 	READ_DATA(document, name);
 	READ_DATA(document, age);

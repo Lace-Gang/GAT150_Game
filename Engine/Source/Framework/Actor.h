@@ -34,13 +34,10 @@ public:
 	void AddComponent(std::unique_ptr<Component> component);
 
 	void SetDamping(float damping) { m_damping = damping; }
-	void SetLifespan(float lifespan) { m_lifespan = lifespan; }
 
 	const Transform& GetTransform() { return m_transform; }
 	void SetTransform(Transform& transform) { m_transform = transform; }
 
-	void SetTag(const std::string& tag) { m_tag = tag; }
-	const std::string& GetTag() { return m_tag; }
 
 	bool& GetDestroyed() { return m_destroyed; }
 
@@ -51,23 +48,18 @@ public:
 
 
 	friend class Scene; 
+public:
+	std::string tag;
+	float lifespan = 0;
 
 protected: 
-	std::string m_tag;
-
 	bool m_destroyed = false;
-	float m_lifespan = 0;
 	
 	Transform m_transform;
 	Vector2 m_velocity{ 0,0 };
 	float m_damping{ 0 };
 
-	//Model* m_model{ nullptr };
 	Scene* m_scene{ nullptr };
 
-	//vector(dynamic array) or list are best for when you don't know the size
-	//vectors are worse for removing at runtime, but also faster. They perfect for what we need right now
 	std::vector<std::unique_ptr<Component>> m_components;
-
-	// Inherited via Object
 };

@@ -2,6 +2,8 @@
 //#include "../Renderer/Model.h" 
 #include "../Components/RenderComponent.h"
 
+
+
 void Actor::Initialize()
 {
 	for (auto& component : m_components) 
@@ -13,11 +15,11 @@ void Actor::Initialize()
 void Actor::Update(float dt)
 {
 	//check for lifespan
-	if (m_lifespan != 0)
+	if (lifespan != 0)
 	{
-		m_lifespan -= dt;
+		lifespan -= dt;
 		//m_lifespan - dt;
-		if (m_lifespan <= 0)
+		if (lifespan <= 0)
 		{
 			m_destroyed = true;
 		}
@@ -59,3 +61,17 @@ void Actor::AddComponent(std::unique_ptr<Component> component)
 	m_components.push_back(std::move(component));
 }
 
+
+
+void Actor::Read(const json_t& value)
+{
+	Object::Read(value);
+
+	READ_DATA(value, tag);
+	READ_DATA(value, lifespan);
+}
+
+void Actor::Write(json_t& value)
+{
+	//To Do
+}
