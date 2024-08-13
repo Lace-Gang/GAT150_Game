@@ -75,9 +75,7 @@
     <ClCompile Include="Source\Renderer\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="..\Build\Assets\Texts\text.txt" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="..\Build\Assets\Scenes\scene.json" />
     <None Include="cpp.hint" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

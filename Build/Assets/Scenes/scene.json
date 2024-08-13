@@ -1,0 +1,32 @@
+{
+  "actors": [
+    {
+      "name": "player",
+      "transform": {
+        "position": [ 60, 60 ],
+        "rotation": 0,
+        "scale": 1
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/changeMyMindMeme.jpg"
+        }
+      ]
+    },
+    {
+      "name": "enemy",
+      "transform": {
+        "position": [ 260, 360 ],
+        "rotation": 90,
+        "scale": 1
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/changeMyMindMeme.jpg"
+        }
+      ]
+    }
+  ]
+}

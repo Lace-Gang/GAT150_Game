@@ -1,4 +1,6 @@
 #pragma once
+
+#include "Object.h"
 #include "../Renderer/Particle.h"
 
 #include <list>
@@ -7,12 +9,19 @@
 class Renderer;
 class Actor;
 class Game;
+class Engine;
 
-class Scene
+class Scene : public Object
 {
 public:
-	Scene() = default;
-	Scene(Game* game) : m_game{ game } {}
+	Scene(Engine* engine, Game* game = nullptr) : 
+		engine{ engine },
+		game{ game } {}
+
+	CLASS_DECLARATION(Scene);
+	;;;;;;; //funny thing is you can put as many as you want and it's fine. I'll take this out later
+
+	void Initialize() override;
 
 	void Update(float dt);
 	void Draw(Renderer& renderer);
@@ -25,13 +34,15 @@ public:
 	template<typename T>
 	T* GetActor();
 
-	Game* GetGame() { return m_game; }
+
+public:
+	Engine* engine{ nullptr };
+	Game* game{ nullptr };
 
 protected:
-	std::list<std::unique_ptr<Actor>> m_actors;
+	std::list<std::unique_ptr<Actor>> actors;
 	std::list<Particle*> m_particles;
 
-	Game* m_game{ nullptr };
 
 };
 
@@ -39,7 +50,7 @@ protected:
 	template<typename T>
 	T* Scene::GetActor()
 	{
-		for (auto& actor : m_actors)
+		for (auto& actor : actors)
 		{
 			T* result = dynamic_cast<T*>(actor.get()); 
 			if (result) return result;
