@@ -39,6 +39,7 @@
 
 // ** Components **
 #include "Components/TextureComponent.h" //texture component includes rendercomponent and component so it's three for one
+#include "Components/EnginePhysicsComponent.h"
 
 #include <SDL.h>
 #include <fmod.hpp>

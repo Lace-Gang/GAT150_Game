@@ -1,7 +1,8 @@
 #include "Renderer.h" 
 
 #include "Texture.h"
-#include "../Math/Vector2.h"
+#include "Math/Vector2.h"
+#include "Math/Transform.h"
 
 #include <iostream>
 #include <SDL.h>
@@ -139,4 +140,19 @@ void Renderer::DrawTexture(Texture* texture, float x, float y, float angle)
 
 	// https://wiki.libsdl.org/SDL2/SDL_RenderCopyExF
 	SDL_RenderCopyExF(m_renderer, texture->m_texture, NULL, &destRect, angle, NULL, SDL_FLIP_NONE);
+}
+
+void Renderer::DrawTexture(Texture* texture, const Transform& transform, bool hflip)
+{
+	Vector2 size = texture->GetSize() * transform.scale;
+
+	SDL_FRect destRect;
+	destRect.x = transform.position.x;
+	destRect.y = transform.position.y;
+	destRect.w = size.x;
+	destRect.h = size.y;
+
+	SDL_RenderCopyExF(m_renderer, texture->m_texture, NULL, &destRect, transform.rotation, NULL, (hflip)? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+	//terinary (|if| [condition]? exectuteA |else|: executeB 
+	//SDL_FLIP_NONE allows us to flip across horizontal or vertical axis (0 is not, 1 is horizontal, 2 is vertical, 3 is both (cause it's a bit mask))
 }

@@ -1,4 +1,5 @@
 #pragma once
+
 #include <SDL.h>
 #include <string>
 #include <SDL_ttf.h>
@@ -27,6 +28,7 @@ public:
 	void DrawCircle(float x, float y, float r);
 
 	void DrawTexture(Texture* texture, float x, float y, float angle = 0.0f);
+	void DrawTexture(Texture* texture, const struct Transform& transform, bool hflip = false);
 
 
 	int GetWidth() const { return m_width; }

@@ -5,12 +5,20 @@
       "transform": {
         "position": [ 60, 60 ],
         "rotation": 0,
-        "scale": 1
+        "scale": 1.0
       },
       "components": [
         {
           "type": "TextureComponent",
           "textureName": "Textures/changeMyMindMeme.jpg"
+        },
+        {
+          "type": "EnginePhysicsComponent",
+          "damping": 0.8
+        },
+        {
+          "type": "PlayerComponent",
+          "speed": 100.0
         }
       ]
     },
@@ -19,7 +27,7 @@
       "transform": {
         "position": [ 260, 360 ],
         "rotation": 90,
-        "scale": 1
+        "scale": 2.0
       },
       "components": [
         {
