@@ -155,7 +155,7 @@ namespace Json
 
 
 
-    bool Read(const rapidjson::Value& value, const std::string& name, class Color& data, bool isRequired)
+    bool Read(const rapidjson::Value& value, const std::string& name, Color& data, bool isRequired)
     {
         // check if the value has the "<name>" and is an array with 2 elements
         if (!value.HasMember(name.c_str()) || !value[name.c_str()].IsArray() || value[name.c_str()].Size() != 4)

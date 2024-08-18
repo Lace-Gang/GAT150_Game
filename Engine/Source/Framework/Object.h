@@ -25,5 +25,5 @@ public:
 
 public: //letting our variables be public because we don't want to have so many getters and setters (This IS bad form though)
 	std::string name; 
-	bool active{ false };
+	bool active{ true };
 };

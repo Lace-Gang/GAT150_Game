@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include <string>
 #include <SDL_ttf.h>
+#include<memory>
 
 class Texture;
 
@@ -27,8 +28,8 @@ public:
 	void DrawRect(float x, float y, float w, float h);
 	void DrawCircle(float x, float y, float r);
 
-	void DrawTexture(Texture* texture, float x, float y, float angle = 0.0f);
-	void DrawTexture(Texture* texture, const struct Transform& transform, bool hflip = false);
+	void DrawTexture(std::weak_ptr<class Texture> texture, float x, float y, float angle = 0.0f);
+	void DrawTexture(std::weak_ptr<class Texture> texture, const struct Transform& transform, bool hflip = false);
 
 
 	int GetWidth() const { return m_width; }

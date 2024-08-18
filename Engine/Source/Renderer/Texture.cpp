@@ -8,17 +8,12 @@
 #include<iostream>
 #include<SDL_image.h>
 
-Texture::~Texture()
-{
-    // if texture exists, destroy texture
-    if (m_texture) SDL_DestroyTexture(m_texture);
-}
 
 bool Texture::Create(std::string name, ...)
 {
     va_list args;
     va_start(args, name);
-    Renderer renderer = va_arg(args, Renderer);
+    Renderer& renderer = va_arg(args, Renderer);
     va_end(args);
 
     return Load(name, renderer);

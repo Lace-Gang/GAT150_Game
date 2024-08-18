@@ -24,6 +24,7 @@ int main(int argc, char* argv[])
 	Factory::Instance().Register<TextureComponent>(TextureComponent::GetTypeName());
 	Factory::Instance().Register<EnginePhysicsComponent>(EnginePhysicsComponent::GetTypeName());
 	Factory::Instance().Register<PlayerComponent>(PlayerComponent::GetTypeName());
+	Factory::Instance().Register<TextComponent>(TextComponent::GetTypeName());
 
 	//auto a = Factory::Instance().Create<Actor>("Actor");
 
@@ -40,9 +41,9 @@ int main(int argc, char* argv[])
 
 
 	//testing the file reading
-	std::string buffer;
-	File::ReadFile("Scenes/scene.json", buffer);
-	std::cout << buffer << std::endl;
+	//std::string buffer;
+	//File::ReadFile("Scenes/scene.json", buffer);
+	//std::cout << buffer << std::endl;
 	
 
 	rapidjson::Document document;
@@ -79,6 +80,13 @@ int main(int argc, char* argv[])
 			engine->Update();
 			scene->Update(engine->GetTime().GetDeltaTime());
 
+			auto* actor = scene->GetActor<Actor>("Text");
+			if (actor)
+			{
+				actor->transform.scale = Math::Abs(Math::Sin(engine->GetTime().GetTime()) * 5);
+				actor->transform.rotation += 90 * engine->GetTime().GetDeltaTime();
+			}
+
 			//____DRAW____
 
 			//	// clear screen
@@ -91,6 +99,7 @@ int main(int argc, char* argv[])
 		}
 	}
 
+	scene->RemoveAll();
 	ResourceManager::Instance().Clear();
 	engine->Shutdown();
 

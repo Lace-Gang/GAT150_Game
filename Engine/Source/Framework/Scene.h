@@ -31,8 +31,8 @@ public:
 
 	void AddParticles(Actor* actor);
 
-	template<typename T>
-	T* GetActor();
+	template<typename T> T* GetActor();
+	template<typename T> T* GetActor(const std::string& name);
 
 
 public:
@@ -54,6 +54,18 @@ protected:
 		{
 			T* result = dynamic_cast<T*>(actor.get()); 
 			if (result) return result;
+		}
+
+		return nullptr;
+	}
+
+	template<typename T>
+	inline T* Scene::GetActor(const std::string& name)
+	{
+		for (auto& actor : actors)
+		{
+			T* result = dynamic_cast<T*>(actor.get());
+			if (result && IsEqualIgnoreCase(result->name, name)) return result;
 		}
 
 		return nullptr;

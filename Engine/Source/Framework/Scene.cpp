@@ -24,7 +24,7 @@ void Scene::Update(float dt)
 
 	for (auto& actor : actors)
 	{
-		actor->Update(dt);
+		if(actor->active) actor->Update(dt);
 
 	}
 
@@ -50,7 +50,7 @@ void Scene::Draw(Renderer& renderer)
 {
 	for (auto& actor : actors)
 	{
-		actor->Draw(renderer);
+		if(actor->active) actor->Draw(renderer);
 	}
 	
 }

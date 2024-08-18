@@ -37,6 +37,9 @@
     <Filter Include="Source\Components">
       <UniqueIdentifier>{da515d49-2f21-43c2-858d-b8f8d3a66002}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\Physics">
+      <UniqueIdentifier>{c575dcfd-15ef-46a5-be05-e3a985a78c55}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Core\ETimer.h">
@@ -141,6 +144,12 @@
     <ClInclude Include="Source\Components\EnginePhysicsComponent.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Components\TextComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Physics\Physics.h">
+      <Filter>Source\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Core\ETimer.cpp">
@@ -208,6 +217,12 @@
     </ClCompile>
     <ClCompile Include="Source\Components\PhysicsComponent.cpp">
       <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\TextComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Physics\Physics.cpp">
+      <Filter>Source\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

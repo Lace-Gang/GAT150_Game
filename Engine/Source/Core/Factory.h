@@ -54,6 +54,8 @@ inline std::unique_ptr<T> Factory::Create(const std::string& name)
 		return std::unique_ptr<T>(dynamic_cast<T*>(m_registry[name]->Create().release()));
 	}
 
+	std::cerr << "Could Not Create Factory Object: " << name << std::endl;
+
 	//name not in registry, return empty unique pointer
 	return std::unique_ptr<T>();
 }

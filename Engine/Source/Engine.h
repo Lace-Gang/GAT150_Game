@@ -40,6 +40,10 @@
 // ** Components **
 #include "Components/TextureComponent.h" //texture component includes rendercomponent and component so it's three for one
 #include "Components/EnginePhysicsComponent.h"
+#include "Components/TextComponent.h"
+
+//** Physics **
+#include "Physics/Physics.h"
 
 #include <SDL.h>
 #include <fmod.hpp>
@@ -63,6 +67,7 @@ public:
 	Audio& GetAudio() { return *m_audio; }
 	Time& GetTime() { return *m_time; }
 	ParticleSystem& GetPS() { return *m_particleSystem; }
+	Physics& GetPhysics() { return *m_physics; }
 
 	bool IsQuit() { return quit; }
 
@@ -73,6 +78,7 @@ private:
 	std::unique_ptr<Input> m_input;
 	std::unique_ptr<Audio> m_audio;
 	std::unique_ptr<Time> m_time;
+	std::unique_ptr<Physics> m_physics;
 
 	std::unique_ptr<ParticleSystem> m_particleSystem;
 };
