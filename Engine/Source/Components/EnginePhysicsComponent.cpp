@@ -2,6 +2,7 @@
 
 #include"Framework/Actor.h"
 
+FACTORY_REGISTER(EnginePhysicsComponent)
 
 void EnginePhysicsComponent::Initialize()
 {

@@ -6,6 +6,8 @@ class EnginePhysicsComponent : public PhysicsComponent
 {
 public:
 	CLASS_DECLARATION(EnginePhysicsComponent)
+	CLASS_PROTOTYPE(EnginePhysicsComponent)
+
 
 	// Inherited via PhysicsComponent
 	void Initialize() override;

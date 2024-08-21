@@ -19,7 +19,7 @@ struct Transform :public Serializable
 		scale{ scale } 
 	{}
 
-
+	Vector2 Forward() { return (Vector2{ 1, 0 }.Rotate(Math::DegToRad(rotation))); }
 
 	// Inherited via Serializable
 	void Read(const json_t& value) override;

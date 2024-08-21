@@ -18,13 +18,19 @@
 
 
 
+
+
+
 int main(int argc, char* argv[])
+
 {
-	Factory::Instance().Register<Actor>(Actor::GetTypeName());
-	Factory::Instance().Register<TextureComponent>(TextureComponent::GetTypeName());
-	Factory::Instance().Register<EnginePhysicsComponent>(EnginePhysicsComponent::GetTypeName());
-	Factory::Instance().Register<PlayerComponent>(PlayerComponent::GetTypeName());
-	Factory::Instance().Register<TextComponent>(TextComponent::GetTypeName());
+
+	
+	//Factory::Instance().Register<Actor>(Actor::GetTypeName());
+	//Factory::Instance().Register<TextureComponent>(TextureComponent::GetTypeName());
+	//Factory::Instance().Register<EnginePhysicsComponent>(EnginePhysicsComponent::GetTypeName());
+	//Factory::Instance().Register<PlayerComponent>(PlayerComponent::GetTypeName());
+	//Factory::Instance().Register<TextComponent>(TextComponent::GetTypeName());
 
 	//auto a = Factory::Instance().Create<Actor>("Actor");
 
