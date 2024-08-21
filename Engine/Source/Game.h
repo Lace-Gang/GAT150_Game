@@ -26,7 +26,7 @@ public:
 protected:
 	int m_score = 0;
 	int m_lives = 0;
-	Scene* m_scene{ nullptr };
+	//Scene* m_scene{ nullptr };
 
 	Engine* m_engine{ nullptr };
 };

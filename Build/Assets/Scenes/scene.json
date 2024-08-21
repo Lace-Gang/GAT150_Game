@@ -3,7 +3,7 @@
     {
       "name": "background",
       "transform": {
-        "position": [ 0, 0 ],
+        "position": [ 600, 300 ],
         "rotation": 0,
         "scale": 2.5
       },
