@@ -1,5 +1,7 @@
 #pragma once
 
+#include"AudioClip.h"
+
 #include <fmod.hpp>
 #include <map>
 #include <string>
@@ -18,6 +20,8 @@ public:
 	bool AddSound(const std::string& name);
 	bool PlaySound(const std::string& name);
 
+	friend class AudioClip;
+	friend class AudioSource;
 private:
 	FMOD::System* m_audio{ nullptr };
 

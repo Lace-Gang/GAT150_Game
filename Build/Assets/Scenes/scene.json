@@ -100,6 +100,11 @@
         {
           "type": "CircleCollisionComponent",
           "radius": 12
+        },
+        {
+          "type": "AudioComponent",
+          "soundName": "audio/cowbell.wav",
+          "playOnStart": true
         }
       ]
     }
