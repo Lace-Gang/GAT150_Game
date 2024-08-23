@@ -7,9 +7,10 @@
 #include<map>
 
 #define ADD_OBSERVER(id, function)EventSystem::Instance().AddObserver(#id, this, std::bind(&function, this, std::placeholders::_1));
+#define REMOVE_OBSERVER		EventSystem::Instance().RemoveObserver(this); //semicolons are optional in macros. If you don't use them here, though they must be present when you *use* the macro
+																			//I'm going to keep it consistent though
 #define EVENT_NOTIFY_DATA(id, data)   EventSystem::Instance().Notify({ #id, data });
 #define EVENT_NOTIFY(id)   EventSystem::Instance().Notify({ #id, true});
-
 
 
 class EventSystem : public Singleton<EventSystem>
@@ -25,6 +26,7 @@ public:
 
 public:
 	void AddObserver(const id_t& id, Observer* observer, EventHandler eventHandler);
+	void RemoveObserver(Observer* observer);
 	void Notify(const Event& event);
 
 private:
