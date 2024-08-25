@@ -30,6 +30,8 @@ public:
 
 	void DrawTexture(std::weak_ptr<class Texture> texture, float x, float y, float angle = 0.0f);
 	void DrawTexture(std::weak_ptr<class Texture> texture, const struct Transform& transform, bool hflip = false);
+	void DrawTexture(std::weak_ptr<class Texture> texture, const struct Transform& transform, const struct Rect& srcRect, bool hflip = false);
+
 
 
 	int GetWidth() const { return m_width; }

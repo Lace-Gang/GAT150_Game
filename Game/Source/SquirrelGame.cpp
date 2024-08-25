@@ -28,14 +28,14 @@ bool SquirrelGame::Initialize()
 	//acorn->transform.rotation = acorn->transform.rotation;
 	acorn->transform.position.x = 500.0;
 	acorn->transform.position.y = 450.0;
-	m_scene->AddActor(std::move(acorn), true);
+	//m_scene->AddActor(std::move(acorn), true);
 	//acorn->scene->AddActor(std::move(acorn), true);
 
 	auto enemy = Factory::Instance().Create<Actor>("enemy");
 	//acorn->transform.rotation = acorn->transform.rotation;
 	enemy->transform.position.x = 700.0;
 	enemy->transform.position.y = 450.0;
-	m_scene->AddActor(std::move(enemy), true);
+	//m_scene->AddActor(std::move(enemy), true);
 	//acorn->scene->AddActor(std::move(acorn), true);
 
 

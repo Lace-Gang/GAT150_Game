@@ -1,25 +1,44 @@
 #include "PlayerComponent.h"
 #include "Engine.h"
-//#include "Components/Box2DPhysicsComponent.h"
-//#include "Physics/RigidBody.h"
+#include "Components/Box2DPhysicsComponent.h"
+#include "Physics/RigidBody.h"
 #include <iostream>
 
 FACTORY_REGISTER(PlayerComponent)
 void PlayerComponent::Initialize()
 {
 	owner->OnCollisionEnter = std::bind(&PlayerComponent::OnCollisionEnter, this, std::placeholders::_1);
+//	owner->GetComponent<PhysicsComponent>()->EnableCollision();
 }
 
 void PlayerComponent::Update(float dt)
 {
 	//Vector2 direction{ 0, 0 };
 
-	lastJump += dt;
 
 	if (health <= 0)
 	{
 		EVENT_NOTIFY(PlayerDead);
 	}
+
+	lastJump += dt;
+	lastCollidable += dt;
+
+
+	if (!collidable && lastCollidable > 0.2  && lastJump > 0.5)
+	{
+		owner->GetComponent<PhysicsComponent>()->EnableCollision();
+		collidable = true;
+	}
+
+	if (!collidable && lastCollidable > 0.5 && lastJump > 0.5)
+	{
+		owner->GetComponent<PhysicsComponent>()->EnableCollision();
+		collidable = true;
+	}
+	//if (collidable && lastJump > 0.5) owner;
+	//b2Contact::SetEnabled(true);
+
 
 
 	float rotate = 0;
@@ -37,6 +56,7 @@ void PlayerComponent::Update(float dt)
 	Vector2 direction = Vector2{ 1, 0 }.Rotate(Math::DegToRad(owner->transform.rotation));
 
 	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_W)) Jump();
+	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_S)) JumpDown();
 
 	owner->GetComponent<PhysicsComponent>()->ApplyTorque(rotate * 90 * dt);
 	owner->GetComponent<PhysicsComponent>()->ApplyForce(direction*speed * thrust);
@@ -78,8 +98,19 @@ void PlayerComponent::Jump()
 		float thrust = 25000.0f;
 		Vector2 directionUp = {0, -2};
 		owner->GetComponent<PhysicsComponent>()->ApplyForce(directionUp * thrust);
+		//owner->GetComponent<RigidBody>()->DisableCollision();
+		owner->GetComponent<PhysicsComponent>()->DisableCollision();
+		lastCollidable = 0.0f;
+		collidable = false;
 		//owner->GetComponent<RigidBody>().shapeDef
 	}
+}
+
+void PlayerComponent::JumpDown()
+{
+	owner->GetComponent<PhysicsComponent>()->DisableCollision();
+	lastCollidable = 0.0f;
+	collidable = false;
 }
 
 void PlayerComponent::Read(const json_t& value)

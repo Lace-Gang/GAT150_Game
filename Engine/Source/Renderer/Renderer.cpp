@@ -157,3 +157,16 @@ void Renderer::DrawTexture(std::weak_ptr< Texture> texture, const Transform& tra
 	//terinary (|if| [condition]? exectuteA |else|: executeB 
 	//SDL_FLIP_NONE allows us to flip across horizontal or vertical axis (0 is not, 1 is horizontal, 2 is vertical, 3 is both (cause it's a bit mask))
 }
+
+void Renderer::DrawTexture(std::weak_ptr<class Texture> texture, const Transform& transform, const Rect& srcRect, bool hflip)
+{
+	Vector2 size = Vector2{ srcRect.w, srcRect.h } * transform.scale;
+
+	SDL_FRect destRect;
+	destRect.x = transform.position.x - size.x * 0.5f;
+	destRect.y = transform.position.y - size.y * 0.5f;
+	destRect.w = size.x;
+	destRect.h = size.y;
+
+	SDL_RenderCopyExF(m_renderer, texture.lock()->m_texture, (SDL_Rect*)&srcRect, &destRect, transform.rotation, NULL, (hflip) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_VERTICAL);
+}

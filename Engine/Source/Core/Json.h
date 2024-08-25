@@ -1,6 +1,7 @@
 #pragma once
 
 #include "./Math/Vector2.h"
+#include "Math/Rect.h"
 #include "./Renderer/Color.h"
 
 #include<rapidjson/document.h>
@@ -28,6 +29,8 @@ namespace Json
 	bool Read(const rapidjson::Value& value, const std::string& name, float& data, bool isRequired = false);
 	bool Read(const rapidjson::Value& value, const std::string& name, Vector2& data, bool isRequired = false);
 	bool Read(const rapidjson::Value& value, const std::string& name, struct Color& data, bool isRequired = false);
+	bool Read(const rapidjson::Value& value, const std::string& name, Rect& data, bool isRequired = false);
+
 	//maybe try to add a Read typename in later?
 
 }

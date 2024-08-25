@@ -39,7 +39,7 @@
     {
       "name": "ground",
       "transform": {
-        "position": [ 600, -600 ],
+        "position": [ 600, 350 ],
         "rotation": 0,
         "scale": 0.2
       },
@@ -61,7 +61,7 @@
     {
       "name": "player",
       "tag": "player",
-      "active": false,
+      "active": true,
       "transform": {
         "position": [ 400, 500 ],
         "rotation": 0,
@@ -90,7 +90,7 @@
     {
       "name": "enemy",
       "tag": "enemy",
-      "active": true,
+      "active": false,
       "prototype": true,
       "transform": {
         "position": [ 200, 500 ],
@@ -104,7 +104,7 @@
         },
         {
           "type": "Box2DPhysicsComponent",
-          "active": true,
+          "active": false,
           "damping": 0.5,
           "angularDamping": 0.85,
           "constrainAngle": true,
@@ -121,7 +121,7 @@
     {
       "name": "acorn",
       "tag": "acorn",
-      "active": true,
+      "active": false,
       "prototype": true,
       "transform": {
         "position": [ 500, 500 ],

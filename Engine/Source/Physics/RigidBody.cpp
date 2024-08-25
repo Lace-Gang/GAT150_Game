@@ -92,7 +92,12 @@ void RigidBody::EnableCollision()
 
 	{
 
-		b2Filter filter = { (uint32_t)(-1) };
+		//b2Filter filter = { (uint32_t)(-1) };
+		b2Filter filter;
+		filter.categoryBits = 0x00000001;
+		filter.maskBits = 0xffffffff;
+
+
 
 		b2Shape_SetFilter(shapeIds[i], filter);
 

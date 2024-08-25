@@ -16,9 +16,10 @@ public:
 	void Initialize() override;
 	void Update(float dt) override;
 	void Draw(Renderer& renderer) override;
-	void Draw(Renderer& renderer, bool mirrored) override;
+	//void Draw(Renderer& renderer, bool mirrored) override;
 
 public:
+	Rect source;
 	std::string textureName;
 	res_t<Texture> texture;
 };

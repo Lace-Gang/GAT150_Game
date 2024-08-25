@@ -28,6 +28,7 @@
 #include "Math/Random.h"
 #include "Math/MathUtils.h"
 #include "Math/Transform.h"
+#include "Math/Rect.h"
 
 // ** framework **
 #include "Framework/Actor.h"

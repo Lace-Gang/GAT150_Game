@@ -54,8 +54,8 @@ public:
 	bool destroyed = false;
 
 	//Added this in myself. I think it will be good for a lot of games
-	float prevx = 0; //owner->transform.position.x
-	bool movingLeft = false;
+	//float prevx = 0; //owner->transform.position.x
+	//bool movingLeft = false;
 
 	Transform transform;
 	Scene* scene{ nullptr };
