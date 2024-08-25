@@ -26,12 +26,30 @@
     <ClCompile Include="Source\SpaceGame.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Components\AcornComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\GroundComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SquirrelGame.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Components\EnemyComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnZone.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Scenes\scene.json">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="cpp.hint" />
+    <None Include="..\Build\Assets\Scenes\squirrel_scene.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Components\PlayerComponent.h">
@@ -42,6 +60,21 @@
     </ClInclude>
     <ClInclude Include="Source\SpaceGame.h">
       <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\AcornComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\GroundComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SquirrelGame.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\EnemyComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnZone.h">
+      <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

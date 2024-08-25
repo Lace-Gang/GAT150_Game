@@ -47,6 +47,19 @@ void TextComponent::Draw(Renderer& renderer)
 	renderer.DrawTexture(m_text->GetTexture(), owner->transform);
 }
 
+
+void TextComponent::Draw(Renderer& renderer, bool mirrored)
+{
+	//update text if text is changed
+	if (textChanged)
+	{
+		textChanged = false;
+		m_text->Create(renderer, text, color);
+	}
+
+	renderer.DrawTexture(m_text->GetTexture(), owner->transform, mirrored);
+}
+
 void TextComponent::SetText(const std::string text)
 {
 	//check if text has been changed to a different text

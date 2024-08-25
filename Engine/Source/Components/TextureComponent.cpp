@@ -24,7 +24,12 @@ void TextureComponent::Draw(Renderer& renderer)
 {
 	Transform transform = owner->transform;
 	renderer.DrawTexture(texture, transform);
-//	renderer.DrawTexture(texture.get() transform, true);
+}
+
+void TextureComponent::Draw(Renderer& renderer, bool mirrored)
+{
+	Transform transform = owner->transform;
+	renderer.DrawTexture(texture, transform, mirrored);
 }
 
 void TextureComponent::Read(const json_t& value)

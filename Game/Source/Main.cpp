@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "SpaceGame.h"
+#include "SquirrelGame.h"
 //#include "Components/PlayerComponent.h"
 
 #include "Framework/Scene.h"
@@ -33,7 +34,8 @@ int main(int argc, char* argv[])
 	engine->Initialize();
 	
 
-	std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>(engine.get());
+	std::unique_ptr<SquirrelGame> game = std::make_unique<SquirrelGame>(engine.get());
+//	std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>(engine.get());
 	game->Initialize();
 
 	{

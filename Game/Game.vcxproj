@@ -179,10 +179,15 @@ fmod_vc.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Components\AcornComponent.cpp" />
+    <ClCompile Include="Source\Components\EnemyComponent.cpp" />
+    <ClCompile Include="Source\Components\GroundComponent.cpp" />
     <ClCompile Include="Source\Components\PlayerComponent.cpp" />
     <ClCompile Include="Source\Components\RocketComponent.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\SpaceGame.cpp" />
+    <ClCompile Include="Source\SquirrelGame.cpp" />
+    <ClCompile Include="TurnZone.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
@@ -191,12 +196,18 @@ fmod_vc.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Scenes\scene.json" />
+    <None Include="..\Build\Assets\Scenes\squirrel_scene.json" />
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\Components\AcornComponent.h" />
+    <ClInclude Include="Source\Components\EnemyComponent.h" />
+    <ClInclude Include="Source\Components\GroundComponent.h" />
     <ClInclude Include="Source\Components\PlayerComponent.h" />
     <ClInclude Include="Source\Components\RocketComponent.h" />
     <ClInclude Include="Source\SpaceGame.h" />
+    <ClInclude Include="Source\SquirrelGame.h" />
+    <ClInclude Include="TurnZone.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

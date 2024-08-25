@@ -17,7 +17,8 @@ public:
 	// Inherited via RenderComponent
 	void Initialize() override;
 	void Update(float dt) override;
-	void Draw(Renderer& renderer) override;
+	void Draw(Renderer& renderer);
+	void Draw(Renderer& renderer, bool mirrored) override;
 
 	void SetText(const std::string text);
 

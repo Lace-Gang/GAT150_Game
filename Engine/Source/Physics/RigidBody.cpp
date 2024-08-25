@@ -23,12 +23,15 @@ RigidBody::RigidBody(const Transform& transform, const Vector2& size, const def_
 	b2Vec2 bsize = ConvertVec2(Physics::ScreenToWorld(size));
 	b2Polygon box = b2MakeBox(bsize.x, bsize.y);
 	b2ShapeDef shapeDef = b2DefaultShapeDef();
-	shapeDef.friction = def.restitution;
+	shapeDef.friction = def.restitution; //is this supposed to be defining friction as restitution?
 	shapeDef.restitution = def.restitution;
 	shapeDef.density = def.density;
 	shapeDef.isSensor = def.isSensor;
 
 	b2CreatePolygonShape(m_bodyId, &shapeDef, &box);
+
+	//to prevento toggling of sensor on actual sensors
+	//innitialSensor = isSensor;
 }
 
 RigidBody::~RigidBody()
@@ -75,3 +78,47 @@ void RigidBody::SetAngularVelocity(float velocity)
 {
 	b2Body_SetAngularVelocity(m_bodyId, velocity);
 }
+
+
+void RigidBody::EnableCollision()
+
+{
+
+	b2ShapeId shapeIds[5];
+
+	int count = b2Body_GetShapes(m_bodyId, shapeIds, 5);
+
+	for (int i = 0; i < count; i++)
+
+	{
+
+		b2Filter filter = { (uint32_t)(-1) };
+
+		b2Shape_SetFilter(shapeIds[i], filter);
+
+	}
+
+}
+
+void RigidBody::DisableCollision()
+
+{
+
+	b2ShapeId shapeIds[5];
+
+	int count = b2Body_GetShapes(m_bodyId, shapeIds, 5);
+
+	for (int i = 0; i < count; i++)
+
+	{
+
+		b2Filter filter = { 0 };
+
+		b2Shape_SetFilter(shapeIds[i], filter);
+
+	}
+
+}
+
+
+

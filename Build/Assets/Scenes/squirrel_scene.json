@@ -1,0 +1,217 @@
+{
+  "actors": [
+    {
+      "name": "background",
+      "transform": {
+        "position": [ 600, 300 ],
+        "rotation": 0,
+        "scale": 2.5
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/sky.jpg"
+        }
+      ]
+    },
+    {
+      "name": "ground",
+      "transform": {
+        "position": [ 600, 550 ],
+        "rotation": 0,
+        "scale": 0.2
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/green_nebula.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "damping": 1000,
+          "angularDamping": 1000,
+          "constrainAngle": true,
+          "gravityScale": 0,
+          "size": [ 1000, 32 ]
+        }
+      ]
+    },
+    {
+      "name": "ground",
+      "transform": {
+        "position": [ 600, -600 ],
+        "rotation": 0,
+        "scale": 0.2
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/green_nebula.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "damping": 1000,
+          "angularDamping": 1000,
+          "constrainAngle": true,
+          "gravityScale": 0,
+          "size": [ 32, 32 ]
+        }
+      ]
+    },
+    {
+      "name": "player",
+      "tag": "player",
+      "active": false,
+      "transform": {
+        "position": [ 400, 500 ],
+        "rotation": 0,
+        "scale": 3.0
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/Player-idle-1.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "damping": 0.5,
+          "angularDamping": 0.85,
+          "constrainAngle": true,
+          "gravityScale": 0.5,
+          "density": "0.1",
+          "size": [ 32, 32 ]
+        },
+        {
+          "type": "PlayerComponent",
+          "speed": 100.0
+        }
+      ]
+    },
+    {
+      "name": "enemy",
+      "tag": "enemy",
+      "active": true,
+      "prototype": true,
+      "transform": {
+        "position": [ 200, 500 ],
+        "rotation": 0,
+        "scale": 3.0
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/Player-run-5.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "active": true,
+          "damping": 0.5,
+          "angularDamping": 0.85,
+          "constrainAngle": true,
+          "gravityScale": 0.5,
+          "density": "0.1",
+          "size": [ 32, 32 ]
+        },
+        {
+          "type": "EnemyComponent",
+          "speed": 1
+        }
+      ]
+    },
+    {
+      "name": "acorn",
+      "tag": "acorn",
+      "active": true,
+      "prototype": true,
+      "transform": {
+        "position": [ 500, 500 ],
+        "rotation": 0,
+        "scale": 2.0
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/Acorn-1.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "active": false,
+          "damping": 0.5,
+          "angularDamping": 0.85,
+          "constrainAngle": true,
+          "gravityScale": 0.5,
+          "density": "0.1",
+          "size": [ 5, 5 ]
+        },
+        {
+          "type": "AcornComponent",
+          "speed": 0.0
+        }
+      ]
+    },
+    {
+      "name": "turnzone",
+      "tag": "turnzone",
+      "active": false,
+      "transform": {
+        "position": [ 500, 500 ],
+        "rotation": 0,
+        "scale": 2.0
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/player.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "isSensor": true,
+          "damping": 0.5,
+          "angularDamping": 0.85,
+          "constrainAngle": true,
+          "gravityScale": 0.0,
+          "density": "0.1",
+          "size": [ 5, 5 ]
+        },
+        {
+          "type": "TurnZone",
+          "speed": 0.0
+        }
+      ]
+    },
+    {
+      "name": "turnzone",
+      "tag": "turnzone",
+      "active": false,
+      "transform": {
+        "position": [ 100, 500 ],
+        "rotation": 0,
+        "scale": 2.0
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/player.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "isSensor": true,
+          "damping": 0.5,
+          "angularDamping": 0.85,
+          "constrainAngle": true,
+          "gravityScale": 0.0,
+          "density": "0.1",
+          "size": [ 5, 5 ]
+        },
+        {
+          "type": "TurnZone",
+          "speed": 0.0
+        }
+      ]
+    }
+
+  ]
+
+
+
+}

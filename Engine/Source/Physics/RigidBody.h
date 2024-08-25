@@ -20,6 +20,8 @@ public:
 		float density = 1.0f;
 		bool isSensor = false; //sensors do not have collision
 
+		//bool innitialSensor = false;
+
 		class Actor* actor{ nullptr };
 	};
 
@@ -38,6 +40,10 @@ public:
 
 	void ApplyTorque(float torque);
 	void SetAngularVelocity(float velocity);
+
+	void EnableCollision();
+	void DisableCollision();
+
 
 private:
 	b2BodyId m_bodyId{ b2_nullBodyId };

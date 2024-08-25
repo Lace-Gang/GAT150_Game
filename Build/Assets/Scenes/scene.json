@@ -107,7 +107,7 @@
         {
           "type": "AudioComponent",
           "soundName": "audio/cowbell.wav",
-          "playOnStart": true
+          "playOnStart": false
         }
       ]
     }

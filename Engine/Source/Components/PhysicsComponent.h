@@ -12,6 +12,9 @@ public:
 	virtual void SetPosition(const Vector2& position) = 0;
 	virtual void SetVelocity(const Vector2& velocity) = 0;
 
+	virtual void EnableCollision() {}
+	virtual void DisableCollision() {}
+
 public:
 	Vector2 velocity{ 0, 0 };
 	Vector2 acceleration{ 0,0 };

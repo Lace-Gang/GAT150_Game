@@ -47,6 +47,17 @@ void Box2DPhysicsComponent::SetVelocity(const Vector2& velocity)
 	m_rigidBody->SetVelocity(velocity);
 }
 
+void Box2DPhysicsComponent::EnableCollision()
+{
+	m_rigidBody->EnableCollision();
+}
+
+void Box2DPhysicsComponent::DisableCollision()
+{
+	m_rigidBody->DisableCollision();
+}
+
+
 void Box2DPhysicsComponent::Read(const json_t& value)
 {
 	READ_DATA_NAME(value, "gravityScale", rigidBodyDef.gravityScale);
@@ -70,3 +81,4 @@ void Box2DPhysicsComponent::Write(json_t& value)
 {
 	//
 }
+
