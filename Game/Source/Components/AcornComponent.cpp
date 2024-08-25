@@ -1,5 +1,10 @@
 #include "AcornComponent.h"
 #include "Engine.h"
+#include "Math/Random.h"
+#include "PauseCollisionZone.h"
+
+
+#include <iostream>
 
 
 
@@ -16,16 +21,37 @@ FACTORY_REGISTER(AcornComponent);
 void AcornComponent::Initialize()
 {
 	owner->OnCollisionEnter = std::bind(&AcornComponent::OnCollisionEnter, this, std::placeholders::_1);
+	//owner->GetComponent<PhysicsComponent>()->DiscriminantCollision();
 }
 
 void AcornComponent::Update(float dt)
 {
-	//
+	lastCollidable += dt;
+
+	if (!collidable && lastCollidable > 0.2)
+	{
+		owner->GetComponent<PhysicsComponent>()->EnableCollision();
+		collidable = true;
+	}
 }
 
 void AcornComponent::OnCollisionEnter(Actor* actor)
 {
-	//
+	if (actor->tag == "PauseCollisionZone" && collidable)
+	{
+		std::cout << "aaaa" << std::endl;
+		//auto czone = dynamic_cast<Component*>(actor);
+		//auto zone = dynamic_cast<PauseCollisionZone*>(czone);
+		//float chance = randomf(zone->uncertainty);
+		//if (chance <= 1)
+		//{
+			owner->GetComponent<PhysicsComponent>()->DisableCollision();
+			lastCollidable = 0.0f;
+			collidable = false;
+		//}
+
+	}
+
 }
 
 void AcornComponent::Read(const json_t& value)

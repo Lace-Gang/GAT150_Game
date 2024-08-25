@@ -18,5 +18,7 @@ public:
 	void OnCollisionEnter(Actor* actor);
 
 private:
+	float lastCollidable = 1.0f;
+	bool collidable = true;
 
 };

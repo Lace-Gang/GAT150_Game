@@ -26,10 +26,9 @@ bool SquirrelGame::Initialize()
 
 	auto acorn = Factory::Instance().Create<Actor>("acorn");
 	//acorn->transform.rotation = acorn->transform.rotation;
-	acorn->transform.position.x = 500.0;
-	acorn->transform.position.y = 450.0;
-	//m_scene->AddActor(std::move(acorn), true);
-	//acorn->scene->AddActor(std::move(acorn), true);
+	acorn->transform.position.x = 100.0;
+	acorn->transform.position.y = 150.0;
+	m_scene->AddActor(std::move(acorn), true);
 
 	auto enemy = Factory::Instance().Create<Actor>("enemy");
 	//acorn->transform.rotation = acorn->transform.rotation;
@@ -37,6 +36,12 @@ bool SquirrelGame::Initialize()
 	enemy->transform.position.y = 450.0;
 	//m_scene->AddActor(std::move(enemy), true);
 	//acorn->scene->AddActor(std::move(acorn), true);
+
+	auto collisionZone = Factory::Instance().Create<Actor>("PauseCollisionZone");
+	//acorn->transform.rotation = acorn->transform.rotation;
+	//acorn->transform.position.x = 100.0;
+	//acorn->transform.position.y = 150.0;
+	m_scene->AddActor(std::move(collisionZone), true);
 
 
 	return true;

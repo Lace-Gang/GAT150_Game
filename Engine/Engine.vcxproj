@@ -78,6 +78,7 @@
     <ClCompile Include="Source\Components\EnginePhysicsComponent.cpp" />
     <ClCompile Include="Source\Components\PhysicsComponent.cpp" />
     <ClCompile Include="Source\Components\TextComponent.cpp" />
+    <ClCompile Include="Source\Components\TextureAnimationComponent.cpp" />
     <ClCompile Include="Source\Components\TextureComponent.cpp" />
     <ClCompile Include="Source\Core\EAssert.cpp" />
     <ClCompile Include="Source\Core\EFile.cpp" />

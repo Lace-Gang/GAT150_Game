@@ -180,6 +180,7 @@ fmod_vc.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Components\AcornComponent.cpp" />
+    <ClCompile Include="Source\Components\PauseCollisionZone.cpp" />
     <ClCompile Include="Source\Components\EnemyComponent.cpp" />
     <ClCompile Include="Source\Components\GroundComponent.cpp" />
     <ClCompile Include="Source\Components\PlayerComponent.cpp" />
@@ -201,6 +202,7 @@ fmod_vc.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Components\AcornComponent.h" />
+    <ClInclude Include="Source\Components\PauseCollisionZone.h" />
     <ClInclude Include="Source\Components\EnemyComponent.h" />
     <ClInclude Include="Source\Components\GroundComponent.h" />
     <ClInclude Include="Source\Components\PlayerComponent.h" />

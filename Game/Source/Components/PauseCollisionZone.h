@@ -1,12 +1,14 @@
 #pragma once
 
+
 #include "Components/Component.h"
 
-class TurnZone : public Component
+class PauseCollisionZone : public Component
 {
 public:
-	CLASS_DECLARATION(TurnZone);
-	CLASS_PROTOTYPE(TurnZone);
+	CLASS_DECLARATION(PauseCollisionZone);
+	CLASS_PROTOTYPE(PauseCollisionZone);
+
 
 	// Inherited via Component
 	void Initialize() override;
@@ -15,5 +17,4 @@ public:
 
 public:
 	int uncertainty{ 1 };
-
 };

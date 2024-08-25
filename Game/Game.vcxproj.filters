@@ -41,6 +41,9 @@
     <ClCompile Include="TurnZone.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Components\PauseCollisionZone.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Scenes\scene.json">
@@ -74,6 +77,9 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="TurnZone.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\PauseCollisionZone.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>
