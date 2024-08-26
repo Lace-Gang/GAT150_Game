@@ -61,7 +61,7 @@
     {
       "name": "player",
       "tag": "player",
-      "active": false,
+      "active": true,
       "transform": {
         "position": [ 400, 500 ],
         "rotation": 0,
@@ -69,8 +69,15 @@
       },
       "components": [
         {
-          "type": "TextureComponent",
-          "textureName": "Textures/Player-idle-1.png"
+          "type": "TextureAnimationComponent",
+          "textureName": "textures/player-run.png",
+          "prototype": true,
+          "fps": 10,
+          "loop": true,
+          "numColumns": 6,
+          "numRows": 1,
+          "startFrame": 1,
+          "endFrame": 6
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -88,9 +95,45 @@
       ]
     },
     {
+      "name": "shadow",
+      "tag": "shadow",
+      "active": true,
+      "transform": {
+        "position": [ 700, 500 ],
+        "rotation": 0,
+        "scale": 3.0
+      },
+      "components": [
+        {
+          "type": "TextureAnimationComponent",
+          "textureName": "textures/dark-run.png",
+          "prototype": true,
+          "fps": 10,
+          "loop": true,
+          "numColumns": 6,
+          "numRows": 1,
+          "startFrame": 1,
+          "endFrame": 6
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "damping": 0.5,
+          "angularDamping": 0.85,
+          "constrainAngle": true,
+          "gravityScale": 0.5,
+          "density": "0.1",
+          "size": [ 32, 32 ]
+        },
+        {
+          "type": "ShadowComponent",
+          "speed": 100.0
+        }
+      ]
+    },
+    {
       "name": "enemy",
       "tag": "enemy",
-      "active": false,
+      "active": true,
       "prototype": true,
       "transform": {
         "position": [ 200, 500 ],
@@ -99,8 +142,14 @@
       },
       "components": [
         {
-          "type": "TextureComponent",
-          "textureName": "Textures/Player-run-5.png"
+          "type": "TextureAnimationComponent",
+          "textureName": "textures/enemy-run.png",
+          "fps": 10,
+          "loop": true,
+          "numColumns": 6,
+          "numRows": 1,
+          "startFrame": 1,
+          "endFrame": 6
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -131,7 +180,38 @@
       "components": [
         {
           "type": "TextureComponent",
-          "textureName": "Textures/Acorn-1.png"
+          "textureName": "Textures/acorn.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "active": false,
+          "damping": 0.5,
+          "angularDamping": 0.85,
+          "constrainAngle": true,
+          "gravityScale": 0.5,
+          "density": "0.1",
+          "size": [ 5, 5 ]
+        },
+        {
+          "type": "AcornComponent",
+          "speed": 0.0
+        }
+      ]
+    },
+    {
+      "name": "goldenacorn",
+      "tag": "goldenacorn",
+      "active": false,
+      "prototype": true,
+      "transform": {
+        "position": [ 500, 500 ],
+        "rotation": 0,
+        "scale": 2.0
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/golden-acorn.png"
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -152,10 +232,10 @@
     {
       "name": "turnzone",
       "tag": "turnzone",
-      "active": false,
+      "active": true,
       "prototype": false,
       "transform": {
-        "position": [ 500, 500 ],
+        "position": [ 900, 500 ],
         "rotation": 0,
         "scale": 2.0
       },
@@ -172,7 +252,7 @@
           "constrainAngle": true,
           "gravityScale": 0.0,
           "density": "0.1",
-          "size": [ 5, 5 ]
+          "size": [ 20, 20 ]
         },
         {
           "type": "TurnZone",
@@ -183,10 +263,10 @@
     {
       "name": "turnzone",
       "tag": "turnzone",
-      "active": false,
+      "active": true,
       "prototype": false,
       "transform": {
-        "position": [ 100, 500 ],
+        "position": [ 10, 500 ],
         "rotation": 0,
         "scale": 2.0
       },
@@ -203,7 +283,7 @@
           "constrainAngle": true,
           "gravityScale": 0.0,
           "density": "0.1",
-          "size": [ 5, 5 ]
+          "size": [ 20, 20 ]
         },
         {
           "type": "TurnZone",
@@ -246,6 +326,78 @@
           "type": "PauseCollisionZone",
           "speed": 0.0,
           "uncertainty": 2
+        }
+      ]
+    },
+    {
+      "name": "scoreText",
+      "active": true,
+      "transform": {
+        "position": [ 60, 30 ],
+        "rotation": 0,
+        "scale": 1.0
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "Score: 0",
+          "fontName": "Fonts/homespun.ttf",
+          "fontSize": 24,
+          "color": [ 0, 0, 0, 1 ]
+        }
+      ]
+    },
+    {
+      "name": "healthText",
+      "active": true,
+      "transform": {
+        "position": [ 60, 60 ],
+        "rotation": 0,
+        "scale": 1.0
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "Health: 0",
+          "fontName": "Fonts/homespun.ttf",
+          "fontSize": 24,
+          "color": [ 0, 0, 0, 1 ]
+        }
+      ]
+    },
+    {
+      "name": "playerIdle",
+      "tag": "player",
+      "prototype": true,
+      "components": [
+        {
+          "type": "TextureAnimationComponent",
+          "textureName": "textures/player-idle.png",
+          "prototype": true,
+          "fps": 10,
+          "loop": true,
+          "numColumns": 6,
+          "numRows": 1,
+          "startFrame": 1,
+          "endFrame": 6
+        }
+      ]
+    },
+    {
+      "name": "playerRun",
+      "tag": "player",
+      "prototype": true,
+      "components": [
+        {
+          "type": "TextureAnimationComponent",
+          "textureName": "textures/player-run.png",
+          "prototype": true,
+          "fps": 10,
+          "loop": true,
+          "numColumns": 6,
+          "numRows": 1,
+          "startFrame": 1,
+          "endFrame": 6
         }
       ]
     }

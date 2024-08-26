@@ -2,7 +2,7 @@
 
 #include "Game.h"
 #include "Event/Observer.h"
-
+#include "Framework/Scene.h"
 #include<memory>
 
 //C++ lets you have more than one base class!

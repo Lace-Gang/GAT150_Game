@@ -38,11 +38,11 @@ void TextureComponent::Draw(Renderer& renderer)
 	renderer.DrawTexture(texture, transform, source);
 }
 
-//void TextureComponent::Draw(Renderer& renderer, bool mirrored)
-//{
-//	Transform transform = owner->transform;
-//	renderer.DrawTexture(texture, transform, mirrored);
-//}
+void TextureComponent::Draw(Renderer& renderer, bool mirrored)
+{
+	Transform transform = owner->transform;
+	renderer.DrawTexture(texture, transform, source, mirrored);
+}
 
 void TextureComponent::Read(const json_t& value)
 {

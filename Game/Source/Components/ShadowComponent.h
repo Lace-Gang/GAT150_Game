@@ -2,11 +2,11 @@
 
 #include "Components/Component.h"
 
-class PlayerComponent : public Component
+class ShadowComponent : public Component
 {
 public:
-	CLASS_DECLARATION(PlayerComponent);
-	CLASS_PROTOTYPE(PlayerComponent);
+	CLASS_DECLARATION(ShadowComponent);
+	CLASS_PROTOTYPE(ShadowComponent)
 
 	void Initialize() override;
 	void Update(float dt) override;
@@ -21,7 +21,7 @@ public:
 
 public:
 	float speed{ 0 };
-	int health{ 1 };
+	//int health{ 1 };
 
 	float lastJump = 1.0f;
 	float lastCollidable = 1.0f;

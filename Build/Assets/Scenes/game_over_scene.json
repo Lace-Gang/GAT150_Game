@@ -1,0 +1,41 @@
+{
+  "actors": [
+    {
+      "name": "background",
+      "transform": {
+        "position": [ 600, 300 ],
+        "rotation": 0,
+        "scale": 2.5
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/sky.jpg"
+        }
+      ]
+    },
+    {
+      "name": "ground",
+      "transform": {
+        "position": [ 600, 550 ],
+        "rotation": 0,
+        "scale": 0.2
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/green_nebula.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "damping": 1000,
+          "angularDamping": 1000,
+          "constrainAngle": true,
+          "gravityScale": 0,
+          "size": [ 1000, 32 ]
+        }
+      ]
+    }
+
+  ]
+}

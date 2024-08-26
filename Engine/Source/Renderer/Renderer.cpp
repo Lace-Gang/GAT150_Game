@@ -168,5 +168,6 @@ void Renderer::DrawTexture(std::weak_ptr<class Texture> texture, const Transform
 	destRect.w = size.x;
 	destRect.h = size.y;
 
-	SDL_RenderCopyExF(m_renderer, texture.lock()->m_texture, (SDL_Rect*)&srcRect, &destRect, transform.rotation, NULL, (hflip) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_VERTICAL);
+	SDL_RenderCopyExF(m_renderer, texture.lock()->m_texture, (SDL_Rect*)&srcRect, &destRect, transform.rotation, NULL, (hflip) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+//	SDL_RenderCopyExF(m_renderer, texture.lock()->m_texture, (SDL_Rect*)&srcRect, &destRect, transform.rotation, NULL, (hflip) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_VERTICAL);
 }

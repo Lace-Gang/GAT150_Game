@@ -2,13 +2,24 @@
 #include "Engine.h"
 #include "Components/Box2DPhysicsComponent.h"
 #include "Physics/RigidBody.h"
-#include <iostream>
+#include "Components/TextureAnimationComponent.h"
+#include <iostream>s
 
 FACTORY_REGISTER(PlayerComponent)
 void PlayerComponent::Initialize()
 {
 	owner->OnCollisionEnter = std::bind(&PlayerComponent::OnCollisionEnter, this, std::placeholders::_1);
+	//auto idle = Factory::Instance().Create<TextureAnimationComponent>("textures/player-idle.png");
+	//owner->AddComponent( ResourceManager::Instance().Get("player-idle", null));
+	//for(auto components : owner->GetComponent(TextureAnimationComponent))
+	//{
+	//
+	//}
+	//owner->GetComponent<TextureComponent>();
 //	owner->GetComponent<PhysicsComponent>()->EnableCollision();
+
+	std::cout << health << std::endl;
+
 }
 
 void PlayerComponent::Update(float dt)
@@ -19,7 +30,11 @@ void PlayerComponent::Update(float dt)
 	if (health <= 0)
 	{
 		EVENT_NOTIFY(PlayerDead);
+		owner->destroyed;
+		return;
 	}
+
+	if (owner->destroyed) return;
 
 	lastJump += dt;
 	lastCollidable += dt;
@@ -80,12 +95,20 @@ void PlayerComponent::OnCollisionEnter(Actor* actor)
 {
 	if (actor->tag == "enemy")
 	{
-		EVENT_NOTIFY(PlayerDead);
+		health -= 1;
 	}
 	
 	if (actor->tag == "acorn")
 	{
+		actor->destroyed = true;
 		EVENT_NOTIFY_DATA(AddPoints, 100);
+	}
+	if (actor->tag == "goldenacorn")
+	{
+		actor->destroyed = true;
+		health += 1;
+		EVENT_NOTIFY_DATA(AddPoints, 200);
+		std::cout << health << std::endl;
 	}
 
 }

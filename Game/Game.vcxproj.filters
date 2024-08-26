@@ -44,6 +44,9 @@
     <ClCompile Include="Source\Components\PauseCollisionZone.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Components\ShadowComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Scenes\scene.json">
@@ -51,6 +54,9 @@
     </None>
     <None Include="cpp.hint" />
     <None Include="..\Build\Assets\Scenes\squirrel_scene.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\game_over_scene.json">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
@@ -80,6 +86,9 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Components\PauseCollisionZone.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\ShadowComponent.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>

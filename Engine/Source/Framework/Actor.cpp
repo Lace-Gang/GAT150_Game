@@ -31,7 +31,7 @@ void Actor::Initialize()
 	{
 		component->Initialize();
 	}
-	//prevx = transform.position.x;
+	prevx = transform.position.x;
 
 }
 
@@ -48,9 +48,9 @@ void Actor::Update(float dt)
 		}
 	}
 
-	//if (movingLeft && prevx < transform.position.x) movingLeft = false;
-	//if (!movingLeft && prevx > transform.position.x) movingLeft = true;
-	//prevx = transform.position.x;
+	if (movingbackwards && prevx < transform.position.x) movingbackwards = false;
+	if (!movingbackwards && prevx > transform.position.x) movingbackwards = true;
+	prevx = transform.position.x;
 
 	for (auto& component : components) //can't copy a unique pointer, but can reference it "auto" vs "auto&"
 	{
@@ -71,8 +71,8 @@ void Actor::Draw(Renderer& renderer)
 		RenderComponent* renderComponent = dynamic_cast<RenderComponent*>(component.get());
 		if (renderComponent)
 		{
-			renderComponent->Draw(renderer);
-			//renderComponent->Draw(renderer, movingLeft);
+			//renderComponent->Draw(renderer);
+			renderComponent->Draw(renderer, movingbackwards);
 
 		}
 	}

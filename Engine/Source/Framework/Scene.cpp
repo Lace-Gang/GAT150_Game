@@ -8,6 +8,7 @@
 #include "Core/EAssert.h"
 
 #include<algorithm> //for remove_if
+#include<memory>
 
 
 
@@ -98,6 +99,11 @@ void Scene::AddActor(std::unique_ptr<Actor> actor, bool initialize)
 
 void Scene::RemoveAll()
 {
+	//for (auto& actor : actors)
+	//{
+	//	actor.get_deleter();
+	//	//actor->destroyed = true;
+	//}
 	actors.clear();
 }
 
