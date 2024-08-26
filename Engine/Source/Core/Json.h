@@ -6,6 +6,7 @@
 
 #include<rapidjson/document.h>
 #include<string>
+#include<vector>
 
 
 // #data just puts strings around the value inside data (basically a to string)
@@ -30,6 +31,9 @@ namespace Json
 	bool Read(const rapidjson::Value& value, const std::string& name, Vector2& data, bool isRequired = false);
 	bool Read(const rapidjson::Value& value, const std::string& name, struct Color& data, bool isRequired = false);
 	bool Read(const rapidjson::Value& value, const std::string& name, Rect& data, bool isRequired = false);
+	bool Read(const rapidjson::Value& value, const std::string& name, std::vector<int>& data, bool isRequired = false);
+	bool Read(const rapidjson::Value& value, const std::string& name, std::vector<std::string>& data, bool isRequired = false);
+
 
 	//maybe try to add a Read typename in later?
 

@@ -8,8 +8,8 @@
 class TextureComponent : public RenderComponent
 {
 public:
-	CLASS_DECLARATION(TextureComponent)
-	CLASS_PROTOTYPE(TextureComponent)
+	CLASS_DECLARATION(TextureComponent);
+	CLASS_PROTOTYPE(TextureComponent);
 
 
 	// Inherited via RenderComponent

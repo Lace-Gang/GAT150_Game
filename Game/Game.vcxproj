@@ -180,6 +180,7 @@ fmod_vc.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Components\AcornComponent.cpp" />
+    <ClCompile Include="Source\Components\CharacterComponent.cpp" />
     <ClCompile Include="Source\Components\PauseCollisionZone.cpp" />
     <ClCompile Include="Source\Components\EnemyComponent.cpp" />
     <ClCompile Include="Source\Components\GroundComponent.cpp" />
@@ -197,13 +198,15 @@ fmod_vc.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Build\Assets\Scenes\game_over_scene.json" />
     <None Include="..\Build\Assets\Scenes\scene.json" />
     <None Include="..\Build\Assets\Scenes\squirrel_scene.json" />
+    <None Include="..\Build\Assets\Scenes\tilemap.json" />
+    <None Include="..\Build\Assets\Scenes\tilemap_2.json" />
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Components\AcornComponent.h" />
+    <ClInclude Include="Source\Components\CharacterComponent.h" />
     <ClInclude Include="Source\Components\PauseCollisionZone.h" />
     <ClInclude Include="Source\Components\EnemyComponent.h" />
     <ClInclude Include="Source\Components\GroundComponent.h" />

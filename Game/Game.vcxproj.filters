@@ -47,6 +47,9 @@
     <ClCompile Include="Source\Components\ShadowComponent.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Components\CharacterComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Build\Assets\Scenes\scene.json">
@@ -56,7 +59,10 @@
     <None Include="..\Build\Assets\Scenes\squirrel_scene.json">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="..\Build\Assets\Scenes\game_over_scene.json">
+    <None Include="..\Build\Assets\Scenes\tilemap.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\tilemap_2.json">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
@@ -89,6 +95,9 @@
       <Filter>Source\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\Components\ShadowComponent.h">
+      <Filter>Source\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Components\CharacterComponent.h">
       <Filter>Source\Components</Filter>
     </ClInclude>
   </ItemGroup>

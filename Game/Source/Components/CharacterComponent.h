@@ -2,17 +2,16 @@
 
 #include "Components/Component.h"
 
-class PlayerComponent : public Component
+class CharacterComponent : public Component
 {
 public:
-	CLASS_DECLARATION(PlayerComponent);
-	CLASS_PROTOTYPE(PlayerComponent);
+	CLASS_DECLARATION(CharacterComponent);
+	CLASS_PROTOTYPE(CharacterComponent);
 
 	void Initialize() override;
 	void Update(float dt) override;
 
 	void OnCollisionEnter(Actor* actor);
-	void OnCollisionExit(Actor* actor);
 
 	void Jump();
 	void JumpDown();
@@ -27,6 +26,4 @@ public:
 	float lastJump = 1.0f;
 	float lastCollidable = 1.0f;
 	bool collidable = true;
-
-	bool onGround = false;
 };

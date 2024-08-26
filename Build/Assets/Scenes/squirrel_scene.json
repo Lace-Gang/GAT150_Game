@@ -358,10 +358,28 @@
       "components": [
         {
           "type": "TextComponent",
-          "text": "Health: 0",
+          "text": "Health: 1",
           "fontName": "Fonts/homespun.ttf",
           "fontSize": 24,
           "color": [ 0, 0, 0, 1 ]
+        }
+      ]
+    },
+    {
+      "name": "DeathText",
+      "prototype": true,
+      "transform": {
+        "position": [ 400, 400 ],
+        "rotation": 0,
+        "scale": 5.0
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "Game Over",
+          "fontName": "Fonts/homespun.ttf",
+          "fontSize": 24,
+          "color": [ 1, 1, 1, 1 ]
         }
       ]
     },

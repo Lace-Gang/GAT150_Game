@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Math/Vector2.h"
+
 #include <SDL.h>
 #include <string>
 #include <SDL_ttf.h>
@@ -26,7 +28,7 @@ public:
 	void DrawPoint(float x, float y);
 	void DrawRect(int x, int y, int w, int h);
 	void DrawRect(float x, float y, float w, float h);
-	void DrawCircle(float x, float y, float r);
+	//void DrawCircle(float x, float y, float r);
 
 	void DrawTexture(std::weak_ptr<class Texture> texture, float x, float y, float angle = 0.0f);
 	void DrawTexture(std::weak_ptr<class Texture> texture, const struct Transform& transform, bool hflip = false);

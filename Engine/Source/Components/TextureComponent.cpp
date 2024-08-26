@@ -24,11 +24,12 @@ void TextureComponent::Initialize()
 		source.w = (int)texture->GetSize().x;
 		source.h = (int)texture->GetSize().y;
 	}
+
 }
 
 void TextureComponent::Update(float dt)
 {
-	//To Do (Maybe)
+	//To Do (Maybe) (Probably not. Not much point to one here)
 }
 
 void TextureComponent::Draw(Renderer& renderer)
@@ -46,8 +47,8 @@ void TextureComponent::Draw(Renderer& renderer, bool mirrored)
 
 void TextureComponent::Read(const json_t& value)
 {
-	READ_DATA(value, source);
 	READ_DATA_REQUIRED(value, textureName);
+	READ_DATA(value, source);
 }
 
 void TextureComponent::Write(json_t& value)

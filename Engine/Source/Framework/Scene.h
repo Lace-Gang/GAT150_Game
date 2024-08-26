@@ -2,6 +2,7 @@
 
 #include "Object.h"
 #include "../Renderer/Particle.h"
+#include "Core/EString.h"
 
 #include <list>
 #include<memory>

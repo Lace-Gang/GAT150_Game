@@ -1,15 +1,14 @@
-#include "PlayerComponent.h"
+#include "CharacterComponent.h"
 #include "Engine.h"
 #include "Components/Box2DPhysicsComponent.h"
 #include "Physics/RigidBody.h"
 #include "Components/TextureAnimationComponent.h"
 #include <iostream>s
 
-FACTORY_REGISTER(PlayerComponent)
-void PlayerComponent::Initialize()
+FACTORY_REGISTER(CharacterComponent)
+void CharacterComponent::Initialize()
 {
-	owner->OnCollisionEnter = std::bind(&PlayerComponent::OnCollisionEnter, this, std::placeholders::_1);
-	owner->OnCollisionExit= std::bind(&PlayerComponent::OnCollisionExit, this, std::placeholders::_1);
+	owner->OnCollisionEnter = std::bind(&CharacterComponent::OnCollisionEnter, this, std::placeholders::_1);
 	//auto idle = Factory::Instance().Create<TextureAnimationComponent>("textures/player-idle.png");
 	//owner->AddComponent( ResourceManager::Instance().Get("player-idle", null));
 	//for(auto components : owner->GetComponent(TextureAnimationComponent))
@@ -23,7 +22,7 @@ void PlayerComponent::Initialize()
 
 }
 
-void PlayerComponent::Update(float dt)
+void CharacterComponent::Update(float dt)
 {
 	//Vector2 direction{ 0, 0 };
 
@@ -31,8 +30,8 @@ void PlayerComponent::Update(float dt)
 	if (health <= 0)
 	{
 		EVENT_NOTIFY(PlayerDead);
-		owner->destroyed;
-		return;
+		//owner->destroyed;
+		//return;
 	}
 
 	//if (owner->destroyed) return;
@@ -59,7 +58,13 @@ void PlayerComponent::Update(float dt)
 
 	float rotate = 0;
 	float thrust = 0;
-	
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_A)) rotate = -1;
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_D)) rotate = 1;
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_W)) thrust = 1;
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_S)) thrust = -1;
+
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_A)) rotate = -1;
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_D)) rotate = 1;
 	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_A)) thrust = -1;
 	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_D)) thrust = 1;
 
@@ -68,15 +73,29 @@ void PlayerComponent::Update(float dt)
 	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_W)) Jump();
 	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_S)) JumpDown();
 
+	owner->GetComponent<PhysicsComponent>()->ApplyTorque(rotate * 90 * dt);
 	owner->GetComponent<PhysicsComponent>()->ApplyForce(direction*speed * thrust);
+	//	owner->GetComponent<PhysicsComponent>()->ApplyForce(direction*speed);
+
+
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_SPACE))
+	//{
+	//	auto rocket = Factory::Instance().Create<Actor>("rocket");
+	//
+	//	rocket->transform.position = owner->transform.position;
+	//	rocket->transform.rotation = owner->transform.rotation;
+	//	owner->scene->AddActor(std::move(rocket), true);
+	//
+	//}
+
+
 }
 
-void PlayerComponent::OnCollisionEnter(Actor* actor)
+void CharacterComponent::OnCollisionEnter(Actor* actor)
 {
 	if (actor->tag == "enemy" || actor->tag == "shadow")
 	{
 		health -= 1;
-		EVENT_NOTIFY_DATA(PlayerChangeHealth, -1);
 	}
 	
 	if (actor->tag == "acorn")
@@ -88,19 +107,13 @@ void PlayerComponent::OnCollisionEnter(Actor* actor)
 	{
 		actor->destroyed = true;
 		health += 1;
-		EVENT_NOTIFY_DATA(PlayerChangeHealth, 1);
 		EVENT_NOTIFY_DATA(AddPoints, 200);
 		std::cout << health << std::endl;
 	}
 
 }
 
-void PlayerComponent::OnCollisionExit(Actor* actor)
-{
-	if (actor->tag == "Ground") onGround = true;
-}
-
-void PlayerComponent::Jump()
+void CharacterComponent::Jump()
 {
 	if (lastJump > 1)
 	{
@@ -116,19 +129,19 @@ void PlayerComponent::Jump()
 	}
 }
 
-void PlayerComponent::JumpDown()
+void CharacterComponent::JumpDown()
 {
 	owner->GetComponent<PhysicsComponent>()->DisableCollision();
 	lastCollidable = 0.0f;
 	collidable = false;
 }
 
-void PlayerComponent::Read(const json_t& value)
+void CharacterComponent::Read(const json_t& value)
 {
 	READ_DATA(value, speed);
 }
 
-void PlayerComponent::Write(json_t& value)
+void CharacterComponent::Write(json_t& value)
 {
 	//
 }

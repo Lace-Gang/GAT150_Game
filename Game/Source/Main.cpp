@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 	
 
 	std::unique_ptr<SquirrelGame> game = std::make_unique<SquirrelGame>(engine.get());
-//	std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>(engine.get());
+	//std::unique_ptr<SpaceGame> game = std::make_unique<SpaceGame>(engine.get());
 	game->Initialize();
 
 	{
