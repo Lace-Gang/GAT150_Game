@@ -1,0 +1,41 @@
+{
+  "actors": [
+    {
+      "name": "TitleText",
+      "prototype": false,
+      "active": true,
+      "transform": {
+        "position": [ 600, 200 ],
+        "rotation": 0,
+        "scale": 5.5
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "Going Nuts!",
+          "fontName": "Fonts/homespun.ttf",
+          "fontSize": 2,
+          "color": [ 1, 1, 1, 0 ]
+        }
+      ]
+    },
+    {
+      "name": "spaceText",
+      "active": true,
+      "transform": {
+        "position": [ 600, 400 ],
+        "rotation": 0,
+        "scale": 1.0
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "Press Space To Start:",
+          "fontName": "Fonts/homespun.ttf",
+          "fontSize": 24,
+          "color": [ 1, 1, 1, 1 ]
+        }
+      ]
+    }
+  ]
+}

@@ -112,6 +112,23 @@ void PlayerComponent::OnCollisionEnter(Actor* actor)
 		std::cout << health << std::endl;
 	}
 
+	if (actor->tag == "Ground")
+	{
+		//std::cout << "test 1" << std::endl;
+		if (actor->transform.position.y < owner->transform.position.y)
+		{
+			//std::cout << "test 2" << std::endl;
+			//float placement = actor->transform.position.y - 100000;
+			//owner->transform.position.y += 1200;
+			//placement -= owner->GetComponent<Box2DPhysicsC>
+			//while (actor->transform.position.y < owner->transform.position.y)
+			//{
+			//	std::cout << "test 3" << std::endl;
+			//	owner->transform.position.y-=100;
+			//}
+		}
+	}
+
 }
 
 void PlayerComponent::OnCollisionExit(Actor* actor)
@@ -131,7 +148,7 @@ void PlayerComponent::Jump(float* speed)
 		//float thrust = 25000.0f;
 		//float thrust = 4000.0f;
 		float thrust = 10000.0f;
-		Vector2 directionUp = {0.0, -2.5f};
+		Vector2 directionUp = {0.0, -3.0f};
 		physics->ApplyForce(directionUp * thrust);
 		//owner->GetComponent<RigidBody>()->DisableCollision();
 

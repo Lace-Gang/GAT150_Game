@@ -1,0 +1,41 @@
+{
+  "actors": [
+    {
+      "name": "DeathText",
+      "prototype": false,
+      "active": true,
+      "transform": {
+        "position": [ 600, 300 ],
+        "rotation": 0,
+        "scale": 5.0
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "Game Over",
+          "fontName": "Fonts/homespun.ttf",
+          "fontSize": 2,
+          "color": [ 1, 1, 1, 0 ]
+        }
+      ]
+    },
+    {
+      "name": "scoreText",
+      "active": true,
+      "transform": {
+        "position": [ 600, 400 ],
+        "rotation": 0,
+        "scale": 1.0
+      },
+      "components": [
+        {
+          "type": "TextComponent",
+          "text": "Score: 0",
+          "fontName": "Fonts/homespun.ttf",
+          "fontSize": 24,
+          "color": [ 1, 1, 1, 1 ]
+        }
+      ]
+    }
+  ]
+}

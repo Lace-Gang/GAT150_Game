@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "Event/Observer.h"
 #include "Framework/Scene.h"
+#include "Components/AudioComponent.h"
 #include<memory>
 
 //C++ lets you have more than one base class!
@@ -30,6 +31,7 @@ public:
 	void Shutdown() override;
 	void Update(float dt) override;
 	void Draw(Renderer& renderer) override;
+	void LoadActors();
 
 	//events
 	void OnPlayerDead(const struct Event& event);
@@ -41,5 +43,7 @@ public:
 
 private:
 	std::unique_ptr<class Scene> m_scene;
-	eState state = eState::Game;
+	std::unique_ptr<class Scene> m_TitleScreen;
+	std::unique_ptr<class Scene> m_DeadScreen;
+	eState state = eState::Title;
 };

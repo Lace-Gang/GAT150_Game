@@ -7,6 +7,7 @@ Box2DPhysicsComponent::Box2DPhysicsComponent(const Box2DPhysicsComponent& other)
 {
 	rigidBodyDef = other.rigidBodyDef;
 	size = other.size;
+	scale = other.scale;
 	//if (other.m_rigidBody)
 	//{
 	//	m_rigidBody = std::make_unique<RigidBody>(*other.m_rigidBody.get());

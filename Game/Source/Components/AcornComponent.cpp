@@ -39,16 +39,16 @@ void AcornComponent::OnCollisionEnter(Actor* actor)
 {
 	if (actor->tag == "PauseCollisionZone" && collidable)
 	{
-		std::cout << "aaaa" << std::endl;
+		//std::cout << "aaaa" << std::endl;
 		//auto czone = dynamic_cast<Component*>(actor);
 		//auto zone = dynamic_cast<PauseCollisionZone*>(czone);
-		//float chance = randomf(zone->uncertainty);
-		//if (chance <= 1)
-		//{
+		float chance = randomf(2);
+		if (chance <= 1)
+		{
 			owner->GetComponent<PhysicsComponent>()->DisableCollision();
 			lastCollidable = 0.0f;
 			collidable = false;
-		//}
+		}
 
 	}
 

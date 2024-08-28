@@ -65,6 +65,12 @@
     <None Include="..\Build\Assets\Scenes\tilemap_2.json">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\Build\Assets\Scenes\player_dead.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\Build\Assets\Scenes\title_screen.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Components\PlayerComponent.h">

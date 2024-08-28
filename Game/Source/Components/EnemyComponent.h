@@ -14,12 +14,13 @@ public:
 
 	void OnCollisionEnter(Actor* actor);
 
-	void Run();
+	//void Run();
 	void Jump(float* speed);
 	void JumpDown();
 
 public:
-	float speed{ 0 };
+	//float speed{ 0 };
+	float speed{ 1000 };
 	float storedSpeed{ 0 };
 	int health{ 1 };
 	float thrust{ 1 };

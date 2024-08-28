@@ -15,57 +15,11 @@
       ]
     },
     {
-      "name": "ground",
-      "active": false,
-      "transform": {
-        "position": [ 600, 550 ],
-        "rotation": 0,
-        "scale": 0.2
-      },
-      "components": [
-        {
-          "type": "TextureComponent",
-          "textureName": "Textures/green_nebula.png"
-        },
-        {
-          "type": "Box2DPhysicsComponent",
-          "damping": 1000,
-          "angularDamping": 1000,
-          "constrainAngle": true,
-          "gravityScale": 0,
-          "size": [ 1000, 32 ]
-        }
-      ]
-    },
-    {
-      "name": "ground",
-      "active": false,
-      "transform": {
-        "position": [ 100, 300 ],
-        "rotation": 0,
-        "scale": 0.2
-      },
-      "components": [
-        {
-          "type": "TextureComponent",
-          "textureName": "Textures/green_nebula.png"
-        },
-        {
-          "type": "Box2DPhysicsComponent",
-          "damping": 1000,
-          "angularDamping": 1000,
-          "constrainAngle": true,
-          "gravityScale": 0,
-          "size": [ 32, 32 ]
-        }
-      ]
-    },
-    {
       "name": "player",
       "tag": "player",
       "active": true,
       "transform": {
-        "position": [ 400, 500 ],
+        "position": [ 150, 100 ],
         "rotation": 0,
         "scale": 3.0
       },
@@ -204,10 +158,81 @@
     {
       "name": "enemy",
       "tag": "enemy",
+      "active": true,
+      "prototype": true,
+      "transform": {
+        "position": [ -700, 1000 ],
+        "rotation": 0,
+        "scale": 3.0
+      },
+      "components": [
+        {
+          "type": "TextureAnimationComponent",
+          "animationName": "idle",
+          "animations": [
+            {
+              "name": "idle",
+              "fps": 6,
+              "numColumns": 8,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 8,
+              "textureName": "Textures/enemy-idle.png"
+            },
+            {
+              "name": "run",
+              "fps": 12,
+              "numColumns": 6,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 6,
+              "textureName": "Textures/enemy-run.png"
+            },
+            {
+              "name": "jump",
+              "fps": 12,
+              "numColumns": 4,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 4,
+              "textureName": "Textures/enemy-jump.png"
+            },
+            {
+              "name": "die",
+              "fps": 12,
+              "numColumns": 4,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 4,
+              "textureName": "Textures/enemy-death.png"
+            }
+          ]
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "isDynamic": true,
+          "damping": 0.5,
+          "angularDamping": 0.85,
+          "constrainAngle": true,
+          "gravityScale": 0.5,
+          "density": "0.1",
+          "shape": "capsule",
+          "friction": 1.5,
+          "scale": [ 0.1, 0.65 ]
+        },
+        {
+          "type": "EnemyComponent",
+          "speed": 250.0
+        }
+      ]
+    },
+    {
+      "name": "enemy2",
+      "tag": "enemy",
       "active": false,
       "prototype": true,
       "transform": {
-        "position": [ -200, 500 ],
+        "position": [ -200, 1500 ],
         "rotation": 0,
         "scale": 3.0
       },
@@ -269,7 +294,7 @@
       "active": false,
       "prototype": true,
       "transform": {
-        "position": [ 500, 500 ],
+        "position": [ -450, 400 ],
         "rotation": 0,
         "scale": 2.0
       },
@@ -300,7 +325,7 @@
       "active": false,
       "prototype": true,
       "transform": {
-        "position": [ 500, 500 ],
+        "position": [ -510, 500 ],
         "rotation": 0,
         "scale": 2.0
       },
@@ -329,40 +354,9 @@
       "name": "turnzone",
       "tag": "turnzone",
       "active": false,
-      "prototype": false,
+      "prototype": true,
       "transform": {
-        "position": [ 900, 500 ],
-        "rotation": 0,
-        "scale": 2.0
-      },
-      "components": [
-        {
-          "type": "TextureComponent",
-          "textureName": "Textures/player.png"
-        },
-        {
-          "type": "Box2DPhysicsComponent",
-          "isSensor": true,
-          "damping": 0.5,
-          "angularDamping": 0.85,
-          "constrainAngle": true,
-          "gravityScale": 0.0,
-          "density": "0.1",
-          "size": [ 20, 20 ]
-        },
-        {
-          "type": "TurnZone",
-          "speed": 0.0
-        }
-      ]
-    },
-    {
-      "name": "turnzone",
-      "tag": "turnzone",
-      "active": false,
-      "prototype": false,
-      "transform": {
-        "position": [ 10, 500 ],
+        "position": [ -900, 900 ],
         "rotation": 0,
         "scale": 2.0
       },
@@ -420,6 +414,36 @@
       ]
     },
     {
+      "name": "StopZone",
+      "tag": "StopZone",
+      "active": true,
+      "prototype": false,
+      "transform": {
+        "position": [ -16, 500 ],
+        "rotation": 0,
+        "scale": 1.0
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "Textures/enemy.png"
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "isSensor": false,
+          "isDynamic": false,
+          "constrainAngle": true,
+          "gravityScale": 0.0,
+          "density": "0.1",
+          "size": [ 32, 4000 ]
+        },
+        {
+          "type": "TurnZone",
+          "speed": 0.0
+        }
+      ]
+    },
+    {
       "name": "scoreText",
       "active": true,
       "transform": {
@@ -456,25 +480,20 @@
       ]
     },
     {
-      "name": "DeathText",
-      "prototype": true,
-      "transform": {
-        "position": [ 400, 400 ],
-        "rotation": 0,
-        "scale": 5.0
-      },
+      "name": "music",
       "components": [
         {
-          "type": "TextComponent",
-          "text": "Game Over",
-          "fontName": "Fonts/homespun.ttf",
-          "fontSize": 24,
-          "color": [ 1, 1, 1, 1 ]
+          "type": "AudioComponent",
+          "soundName": "audio/undersea.wav",
+          "playOnStart": true,
+          "loop": true,
+          "volume": 0.1
         }
       ]
     }
-      
-    
+
+
+
   ] 
     
 

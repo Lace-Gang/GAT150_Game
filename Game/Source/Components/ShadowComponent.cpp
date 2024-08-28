@@ -96,7 +96,7 @@ void ShadowComponent::Jump(float* speed)
 
 		*speed *= 0.4;
 		float thrust = 10000.0f;
-		Vector2 directionUp = { 0.0, -2.5f };
+		Vector2 directionUp = { 0.0, -3.0f };
 		physics->ApplyForce(directionUp * thrust);
 
 		physics->DisableCollision();

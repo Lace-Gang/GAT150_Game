@@ -50,15 +50,15 @@ void EnemyComponent::Update(float dt)
 
 
 	float rotate = 0;
-	float thrust = 0;
+	//float thrust = 1;
 
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_A)) thrust = 1;
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_D)) thrust = -1;
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_A)) thrust = 1;
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_D)) thrust = -1;
 
 	Vector2 direction = Vector2{ 1, 0 }.Rotate(Math::DegToRad(owner->transform.rotation));
 
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_W)) Jump(&speed);
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_S)) JumpDown();
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_W)) Jump(&speed);
+	//if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_S)) JumpDown();
 
 	owner->GetComponent<PhysicsComponent>()->ApplyTorque(rotate * 90 * dt);
 	owner->GetComponent<PhysicsComponent>()->ApplyForce(direction * speed * thrust);
@@ -70,6 +70,7 @@ void EnemyComponent::Update(float dt)
 
 void EnemyComponent::OnCollisionEnter(Actor* actor)
 {
+	if (actor->tag == "turnzone") thrust *= -1;
 	if (actor->tag == "water")
 	{
 		animation->SetAnimation("die");

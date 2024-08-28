@@ -198,10 +198,12 @@ fmod_vc.lib;box2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Build\Assets\Scenes\player_dead.json" />
     <None Include="..\Build\Assets\Scenes\scene.json" />
     <None Include="..\Build\Assets\Scenes\squirrel_scene.json" />
     <None Include="..\Build\Assets\Scenes\tilemap.json" />
     <None Include="..\Build\Assets\Scenes\tilemap_2.json" />
+    <None Include="..\Build\Assets\Scenes\title_screen.json" />
     <None Include="cpp.hint" />
   </ItemGroup>
   <ItemGroup>
