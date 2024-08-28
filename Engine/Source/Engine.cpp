@@ -18,7 +18,7 @@ bool Engine::Initialize()
 
     
     m_renderer->Initialize(); //the shorthand
-    m_renderer->CreateWindow("Game Engine", 1200, 800);
+    m_renderer->CreateWindow("Game Engine", 1152, 768);
 
     m_input->Initialize();
     m_audio->Initialize();

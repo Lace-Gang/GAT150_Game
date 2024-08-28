@@ -5,20 +5,29 @@
 class RigidBody
 {
 public:
+	enum Shape
+	{
+		BOX,
+		CAPSULE,
+		CIRCLE
+	};
+
 	struct def_t
 	{
 		// body
 		float gravityScale = 1;
-		float damping = 0;
-		float angularDamping = 0;
-		bool  constrainAngle = false; //(makes the object not rotate when it falls or anything)
+		float damping = 0.2;
+		float angularDamping = 0.2;
+		bool  constrainAngle = true; //(makes the object not rotate when it falls or anything)
 		bool  isDynamic = true;
 
 		// shape
-		float friction = 0.0f;
+		float friction = 0.3f;
 		float restitution = 0.0f; //how much energy is conserved after bouncing (how bouncy it is)
 		float density = 1.0f;
 		bool isSensor = false; //sensors do not have collision
+
+		Shape shape = Shape::BOX;
 
 		//bool innitialSensor = false;
 

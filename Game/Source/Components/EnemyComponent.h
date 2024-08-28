@@ -15,13 +15,23 @@ public:
 	void OnCollisionEnter(Actor* actor);
 
 	void Run();
-	void Jump();
+	void Jump(float* speed);
+	void JumpDown();
 
 public:
-	float speed{ 70 };
-	float thrust = 1;
+	float speed{ 0 };
+	float storedSpeed{ 0 };
 	int health{ 1 };
+	float thrust{ 1 };
 
 	float lastJump = 1.0f;
+	float lastCollidable = 1.0f;
+	bool collidable = true;
+	bool isJumping = false;
+
+	int groundCount{ 0 };
+
+	class PhysicsComponent* physics{ nullptr };
+	class TextureAnimationComponent* animation{ nullptr };
 };
 

@@ -47,7 +47,7 @@ void TextureComponent::Draw(Renderer& renderer, bool mirrored)
 
 void TextureComponent::Read(const json_t& value)
 {
-	READ_DATA_REQUIRED(value, textureName);
+	READ_DATA(value, textureName);
 	READ_DATA(value, source);
 }
 

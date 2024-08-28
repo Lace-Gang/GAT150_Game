@@ -21,15 +21,21 @@ void PlayerComponent::Initialize()
 
 	std::cout << health << std::endl;
 
+	physics = owner->GetComponent<PhysicsComponent>();
+	animation = owner->GetComponent<TextureAnimationComponent>();
+
+	storedSpeed = speed;
+
 }
 
 void PlayerComponent::Update(float dt)
 {
-	//Vector2 direction{ 0, 0 };
+	//bool onGround = (groundCount > 0);
 
 
 	if (health <= 0)
 	{
+		animation->SetAnimation("die");
 		EVENT_NOTIFY(PlayerDead);
 		owner->destroyed;
 		return;
@@ -41,19 +47,21 @@ void PlayerComponent::Update(float dt)
 	lastCollidable += dt;
 
 
-	if (!collidable && lastCollidable > 0.2  && lastJump > 0.5)
+	if (!collidable && lastCollidable > 0.3  && lastJump > 0.6)
 	{
-		owner->GetComponent<PhysicsComponent>()->EnableCollision();
+		isJumping = false;
+		physics->EnableCollision();
 		collidable = true;
+		speed = storedSpeed;
+		//std::cout << "fixed speed" << std::endl;
 	}
 
-	if (!collidable && lastCollidable > 0.5 && lastJump > 0.5)
-	{
-		owner->GetComponent<PhysicsComponent>()->EnableCollision();
-		collidable = true;
-	}
-	//if (collidable && lastJump > 0.5) owner;
-	//b2Contact::SetEnabled(true);
+	//if (!collidable && lastCollidable > 0.5 && lastJump > 0.5)
+	//{
+	//	physics->EnableCollision();
+	//	collidable = true;
+	//	
+	//}
 
 
 
@@ -65,10 +73,15 @@ void PlayerComponent::Update(float dt)
 
 	Vector2 direction = Vector2{ 1, 0 }.Rotate(Math::DegToRad(owner->transform.rotation));
 
-	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_W)) Jump();
+	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_W)) Jump(&speed);
 	if (owner->scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_S)) JumpDown();
 
-	owner->GetComponent<PhysicsComponent>()->ApplyForce(direction*speed * thrust);
+	physics->ApplyForce(direction * speed * thrust);
+	//physics->ApplyForce(Vector2{ 0, -1000 });
+	//float modifier = (onGround) ? : 0.2f;
+
+	if (Math::Abs(physics->velocity.x) > 0.1f && !isJumping) animation->SetAnimation("run");
+	else if(!isJumping) animation->SetAnimation("idle");
 }
 
 void PlayerComponent::OnCollisionEnter(Actor* actor)
@@ -77,6 +90,12 @@ void PlayerComponent::OnCollisionEnter(Actor* actor)
 	{
 		health -= 1;
 		EVENT_NOTIFY_DATA(PlayerChangeHealth, -1);
+	}
+	if (actor->tag == "water")
+	{
+		EVENT_NOTIFY_DATA(PlayerChangeHealth, -health);
+		health -= health;
+		animation->SetAnimation("die");
 	}
 	
 	if (actor->tag == "acorn")
@@ -97,19 +116,26 @@ void PlayerComponent::OnCollisionEnter(Actor* actor)
 
 void PlayerComponent::OnCollisionExit(Actor* actor)
 {
-	if (actor->tag == "Ground") onGround = true;
+	//if (actor->tag == "Ground") groundCount++;
 }
 
-void PlayerComponent::Jump()
+void PlayerComponent::Jump(float* speed)
 {
 	if (lastJump > 1)
 	{
+		isJumping = true;
 		lastJump = 0.0f;
-		float thrust = 25000.0f;
-		Vector2 directionUp = {0, -2};
-		owner->GetComponent<PhysicsComponent>()->ApplyForce(directionUp * thrust);
+		animation->SetAnimation("jump");
+
+		*speed *= 0.4;
+		//float thrust = 25000.0f;
+		//float thrust = 4000.0f;
+		float thrust = 10000.0f;
+		Vector2 directionUp = {0.0, -2.5f};
+		physics->ApplyForce(directionUp * thrust);
 		//owner->GetComponent<RigidBody>()->DisableCollision();
-		owner->GetComponent<PhysicsComponent>()->DisableCollision();
+
+		physics->DisableCollision();
 		lastCollidable = 0.0f;
 		collidable = false;
 		//owner->GetComponent<RigidBody>().shapeDef
@@ -118,6 +144,8 @@ void PlayerComponent::Jump()
 
 void PlayerComponent::JumpDown()
 {
+	isJumping = true;
+	animation->SetAnimation("jump");
 	owner->GetComponent<PhysicsComponent>()->DisableCollision();
 	lastCollidable = 0.0f;
 	collidable = false;

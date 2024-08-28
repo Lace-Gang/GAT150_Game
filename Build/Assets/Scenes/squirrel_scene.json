@@ -16,6 +16,7 @@
     },
     {
       "name": "ground",
+      "active": false,
       "transform": {
         "position": [ 600, 550 ],
         "rotation": 0,
@@ -38,6 +39,7 @@
     },
     {
       "name": "ground",
+      "active": false,
       "transform": {
         "position": [ 100, 300 ],
         "rotation": 0,
@@ -70,100 +72,194 @@
       "components": [
         {
           "type": "TextureAnimationComponent",
-          "textureName": "textures/player-run.png",
-          "prototype": true,
-          "fps": 10,
-          "loop": true,
-          "numColumns": 6,
-          "numRows": 1,
-          "startFrame": 1,
-          "endFrame": 6
+          "animationName": "idle",
+          "animations": [
+            {
+              "name": "idle",
+              "fps": 6,
+              "numColumns": 8,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 8,
+              "textureName": "Textures/player-idle.png"
+            },
+            {
+              "name": "run",
+              "fps": 12,
+              "numColumns": 6,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 6,
+              "textureName": "Textures/player-run.png"
+            },
+            {
+              "name": "jump",
+              "fps": 12,
+              "numColumns": 4,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 4,
+              "textureName": "Textures/player-jump.png"
+            },
+            {
+              "name": "die",
+              "fps": 12,
+              "numColumns": 4,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 4,
+              "textureName": "Textures/enemy-death.png"
+            }
+          ]
         },
         {
           "type": "Box2DPhysicsComponent",
+          "isDynamic": true,
           "damping": 0.5,
           "angularDamping": 0.85,
           "constrainAngle": true,
           "gravityScale": 0.5,
           "density": "0.1",
-          "size": [ 32, 32 ]
+          "shape": "capsule",
+          "friction": 1.5,
+          "scale": [ 0.1, 0.65 ]
         },
         {
           "type": "PlayerComponent",
-          "speed": 100.0
+          "speed": 500.0
         }
       ]
     },
     {
       "name": "shadow",
       "tag": "shadow",
-      "active": true,
+      "active": false,
+      "prototype": true,
       "transform": {
-        "position": [ 700, 500 ],
+        "position": [ -700, 500 ],
         "rotation": 0,
         "scale": 3.0
       },
       "components": [
         {
           "type": "TextureAnimationComponent",
-          "textureName": "textures/dark-run.png",
-          "prototype": true,
-          "fps": 10,
-          "loop": true,
-          "numColumns": 6,
-          "numRows": 1,
-          "startFrame": 1,
-          "endFrame": 6
+          "animationName": "idle",
+          "animations": [
+            {
+              "name": "idle",
+              "fps": 6,
+              "numColumns": 8,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 8,
+              "textureName": "Textures/dark-idle.png"
+            },
+            {
+              "name": "run",
+              "fps": 12,
+              "numColumns": 6,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 6,
+              "textureName": "Textures/dark-run.png"
+            },
+            {
+              "name": "jump",
+              "fps": 12,
+              "numColumns": 4,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 4,
+              "textureName": "Textures/dark-jump.png"
+            },
+            {
+              "name": "die",
+              "fps": 12,
+              "numColumns": 4,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 4,
+              "textureName": "Textures/enemy-death.png"
+            }
+          ]
         },
         {
           "type": "Box2DPhysicsComponent",
+          "isDynamic": true,
           "damping": 0.5,
           "angularDamping": 0.85,
           "constrainAngle": true,
           "gravityScale": 0.5,
           "density": "0.1",
-          "size": [ 32, 32 ]
+          "shape": "capsule",
+          "friction": 1.5,
+          "scale": [ 0.1, 0.65 ]
         },
         {
           "type": "ShadowComponent",
-          "speed": 100.0
+          "speed": 500.0
         }
       ]
     },
     {
       "name": "enemy",
       "tag": "enemy",
-      "active": true,
+      "active": false,
       "prototype": true,
       "transform": {
-        "position": [ 200, 500 ],
+        "position": [ -200, 500 ],
         "rotation": 0,
         "scale": 3.0
       },
       "components": [
         {
           "type": "TextureAnimationComponent",
-          "textureName": "textures/enemy-run.png",
-          "fps": 10,
-          "loop": true,
-          "numColumns": 6,
-          "numRows": 1,
-          "startFrame": 1,
-          "endFrame": 6
+          "animationName": "idle",
+          "animations": [
+            {
+              "name": "idle",
+              "fps": 6,
+              "numColumns": 8,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 8,
+              "textureName": "Textures/enemy-idle.png"
+            },
+            {
+              "name": "run",
+              "fps": 12,
+              "numColumns": 6,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 6,
+              "textureName": "Textures/enemy-run.png"
+            },
+            {
+              "name": "jump",
+              "fps": 12,
+              "numColumns": 4,
+              "numRows": 1,
+              "startFrame": 1,
+              "endFrame": 4,
+              "textureName": "Textures/enemy-jump.png"
+            }
+          ]
         },
         {
           "type": "Box2DPhysicsComponent",
-          "active": false,
+          "isDynamic": true,
           "damping": 0.5,
           "angularDamping": 0.85,
           "constrainAngle": true,
           "gravityScale": 0.5,
           "density": "0.1",
-          "size": [ 32, 32 ]
+          "shape": "capsule",
+          "friction": 1.5,
+          "scale": [ 0.1, 0.65 ]
         },
         {
           "type": "EnemyComponent",
-          "speed": 1
+          "speed": 500
         }
       ]
     },
@@ -190,7 +286,7 @@
           "constrainAngle": true,
           "gravityScale": 0.5,
           "density": "0.1",
-          "size": [ 5, 5 ]
+          "size": [ 10, 5 ]
         },
         {
           "type": "AcornComponent",
@@ -221,7 +317,7 @@
           "constrainAngle": true,
           "gravityScale": 0.5,
           "density": "0.1",
-          "size": [ 5, 5 ]
+          "size": [ 10, 5 ]
         },
         {
           "type": "AcornComponent",
@@ -232,7 +328,7 @@
     {
       "name": "turnzone",
       "tag": "turnzone",
-      "active": true,
+      "active": false,
       "prototype": false,
       "transform": {
         "position": [ 900, 500 ],
@@ -263,7 +359,7 @@
     {
       "name": "turnzone",
       "tag": "turnzone",
-      "active": true,
+      "active": false,
       "prototype": false,
       "transform": {
         "position": [ 10, 500 ],
@@ -297,20 +393,14 @@
       "active": false,
       "prototype": true,
       "transform": {
-        "position": [ 100, 250 ],
+        "position": [ -100, 250 ],
         "rotation": 0,
         "scale": 2.0
       },
       "components": [
         {
-          "type": "TextureAnimationComponent",
-          "textureName": "textures/bat.png",
-          "fps": 10,
-          "loop": true,
-          "numColumns": 4,
-          "numRows": 1,
-          "startFrame": 1,
-          "endFrame": 4
+          "type": "TextureComponent",
+          "textureName": "Textures/enemy.png"
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -382,43 +472,9 @@
           "color": [ 1, 1, 1, 1 ]
         }
       ]
-    },
-    {
-      "name": "playerIdle",
-      "tag": "player",
-      "prototype": true,
-      "components": [
-        {
-          "type": "TextureAnimationComponent",
-          "textureName": "textures/player-idle.png",
-          "prototype": true,
-          "fps": 10,
-          "loop": true,
-          "numColumns": 6,
-          "numRows": 1,
-          "startFrame": 1,
-          "endFrame": 6
-        }
-      ]
-    },
-    {
-      "name": "playerRun",
-      "tag": "player",
-      "prototype": true,
-      "components": [
-        {
-          "type": "TextureAnimationComponent",
-          "textureName": "textures/player-run.png",
-          "prototype": true,
-          "fps": 10,
-          "loop": true,
-          "numColumns": 6,
-          "numRows": 1,
-          "startFrame": 1,
-          "endFrame": 6
-        }
-      ]
     }
+      
+    
   ] 
     
 

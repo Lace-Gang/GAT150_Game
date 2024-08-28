@@ -21,7 +21,8 @@
         },
         {
           "type": "Box2DPhysicsComponent",
-          "isDynamic": false
+          "isDynamic": false,
+          "restitution": 0.0
         }
       ]
     },
@@ -39,14 +40,94 @@
           "textureName": "textures/tilesheet_128x128.png",
           "source": [
             128,
-            128,
+            0,
             128,
             128
           ]
         },
         {
           "type": "Box2DPhysicsComponent",
-          "isDynamic": false
+          "isDynamic": false,
+          "restitution": 0.0
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "tile03",
+      "tag": "Ground",
+      "prototype": true,
+      "transform": {
+        "scale": 0.5
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "textures/tilesheet_128x128.png",
+          "source": [
+            256,
+            0,
+            128,
+            128
+          ]
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "isDynamic": false,
+          "restitution": 0.0
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "tile04",
+      "tag": "water",
+      "prototype": true,
+      "transform": {
+        "scale": 0.5
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "textures/tilesheet_128x128.png",
+          "source": [
+            256,
+            256,
+            128,
+            128
+          ]
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "isDynamic": false,
+          "isScanner":  false,
+          "restitution": 0.0
+        }
+      ]
+    },{
+      "type": "Actor",
+      "name": "tile05",
+      "tag": "water",
+      "prototype": true,
+      "transform": {
+        "scale": 0.5
+      },
+      "components": [
+        {
+          "type": "TextureComponent",
+          "textureName": "textures/tilesheet_128x128.png",
+          "source": [
+            256,
+            256,
+            128,
+            128
+          ]
+        },
+        {
+          "type": "Box2DPhysicsComponent",
+          "isDynamic": false,
+          "isScanner":  true,
+          "restitution": 0.0
         }
       ]
     },
@@ -62,22 +143,25 @@
       "components": [
         {
           "type": "TilemapComponent",
-          "numColumns": 13,
-          "numRows": 10,
+          "numColumns": 19,
+          "numRows": 13,
           "tileSize": [ 64, 64 ],
-          "tileNames": [ "", "tile01", "tile02" ],
+          "tileNames": [ "", "tile01", "tile02", "tile03", "tile04", "tile05" ],
           "tiles": [
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0,
-              0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 2,
-              2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-            ]
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              0, 0, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+              0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+              4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1,
+              5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 1
+          ]
         }
       ]
     }

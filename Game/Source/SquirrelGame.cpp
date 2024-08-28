@@ -12,8 +12,8 @@ bool SquirrelGame::Initialize()
 	//innitializing the scene and all scene components
 	m_scene = std::make_unique<Scene>(m_engine);
 	//std::string sceneNames[] = { "Scenes/tilemap.json", "Scenes/squirrel_scene.json" };
-	//std::string sceneNames[] = { "Scenes/tilemap_2.json", "Scenes/squirrel_scene.json" };
-	std::string sceneNames[] = { "Scenes/squirrel_scene.json" };
+	std::string sceneNames[] = { "Scenes/tilemap_2.json", "Scenes/squirrel_scene.json" };
+	//std::string sceneNames[] = { "Scenes/squirrel_scene.json" };
 	for (auto sceneName : sceneNames)
 	{
 		rapidjson::Document document;
@@ -55,7 +55,7 @@ bool SquirrelGame::Initialize()
 	//acorn->transform.rotation = acorn->transform.rotation;
 	enemy->transform.position.x = 700.0;
 	enemy->transform.position.y = 450.0;
-	//m_scene->AddActor(std::move(enemy), true);
+	m_scene->AddActor(std::move(enemy), true);
 	//acorn->scene->AddActor(std::move(acorn), true);
 
 	auto collisionZone = Factory::Instance().Create<Actor>("PauseCollisionZone");
@@ -82,8 +82,15 @@ void SquirrelGame::Update(float dt)
 	switch (state)
 	{
 	case SquirrelGame::eState::Title:
+			if (m_scene->engine->GetInput().GetKeyDown(SDL_SCANCODE_SPACE))
+			{
+				state = eState::StartGame;
+			}
 		break;
 	case SquirrelGame::eState::StartGame:
+			m_score = 0;
+			m_playerHealth = 1;
+			state = eState::Game;
 		break;
 	case SquirrelGame::eState::StartLevel:
 		break;
@@ -106,10 +113,13 @@ void SquirrelGame::Update(float dt)
 			//m_scene->Update(m_engine->GetTime().GetDeltaTime());
 		break;
 	case SquirrelGame::eState::SetWin:
+		//
 		break;
 	case SquirrelGame::eState::GameWon:
+		//
 		break;
 	case SquirrelGame::eState::LevelTransition:
+		//
 		break;
 	default:
 		break;
@@ -126,7 +136,7 @@ void SquirrelGame::Draw(Renderer& renderer)
 
 void SquirrelGame::OnPlayerDead(const Event& event)
 {
-	state = eState::PlayerDead;
+	//state = eState::PlayerDead;
 }
 
 void SquirrelGame::OnPlayerChangeHealth(const Event& event)
