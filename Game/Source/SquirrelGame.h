@@ -41,6 +41,8 @@ public:
 public:
 	int m_playerHealth = 1;
 
+	float acorn_timer = 0.0f;
+
 private:
 	std::unique_ptr<class Scene> m_scene;
 	std::unique_ptr<class Scene> m_TitleScreen;

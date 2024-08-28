@@ -16,6 +16,7 @@ public:
 	void Update(float dt) override;
 
 	void OnCollisionEnter(Actor* actor);
+	void OnCollisionExit(Actor* actor);
 
 private:
 	float lastCollidable = 1.0f;

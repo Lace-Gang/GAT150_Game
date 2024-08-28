@@ -51,7 +51,23 @@ void AcornComponent::OnCollisionEnter(Actor* actor)
 		}
 
 	}
+	if (actor->tag == "water")
+	{
+		owner->destroyed = true;
+	}
 
+}
+
+void AcornComponent::OnCollisionExit(Actor* actor)
+{
+	if (actor->tag == "PauseCollisionZone" && collidable)
+	{
+		
+		owner->GetComponent<PhysicsComponent>()->EnableCollision();
+		collidable = true;
+		
+
+	}
 }
 
 void AcornComponent::Read(const json_t& value)

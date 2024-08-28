@@ -293,6 +293,7 @@
       "tag": "acorn",
       "active": false,
       "prototype": true,
+      "lifespan":  10,
       "transform": {
         "position": [ -450, 400 ],
         "rotation": 0,
@@ -311,7 +312,7 @@
           "constrainAngle": true,
           "gravityScale": 0.5,
           "density": "0.1",
-          "size": [ 10, 5 ]
+          "size": [ 10, 10 ]
         },
         {
           "type": "AcornComponent",
@@ -324,6 +325,7 @@
       "tag": "goldenacorn",
       "active": false,
       "prototype": true,
+      "lifespan": 20,
       "transform": {
         "position": [ -510, 500 ],
         "rotation": 0,
@@ -342,7 +344,7 @@
           "constrainAngle": true,
           "gravityScale": 0.5,
           "density": "0.1",
-          "size": [ 10, 5 ]
+          "size": [ 10, 10 ]
         },
         {
           "type": "AcornComponent",
@@ -404,7 +406,7 @@
           "constrainAngle": true,
           "gravityScale": 0.0,
           "density": "0.1",
-          "size": [ 32, 32 ]
+          "size": [ 128, 70 ]
         },
         {
           "type": "PauseCollisionZone",

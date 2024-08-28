@@ -2,6 +2,7 @@
 #include "Engine.h"
 #include "Framework/Actor.h"
 #include "Components/AcornComponent.h"
+#include "Math/Random.h"
 
 #include<iostream>
 #include<memory>
@@ -106,6 +107,29 @@ void SquirrelGame::Update(float dt)
 			state = eState::Game;
 		break;
 	case SquirrelGame::eState::Game:
+
+		acorn_timer += dt;
+
+		if (acorn_timer > 4)
+		{
+			acorn_timer = 0;
+			float probability = randomf(10);
+			float location = randomf(1200);
+			if (probability <= 1)
+			{
+				auto goldacorn = Factory::Instance().Create<Actor>("goldenacorn");
+				goldacorn->transform.position.x = location;
+				goldacorn->transform.position.y = 10.0;
+				m_scene->AddActor(std::move(goldacorn), true);
+				return;
+			}
+
+			auto acorn = Factory::Instance().Create<Actor>("acorn");
+			acorn->transform.position.x = location;
+			acorn->transform.position.y = 10.0;
+			m_scene->AddActor(std::move(acorn), true);
+		}
+
 		m_scene->Update(m_engine->GetTime().GetDeltaTime());
 		break;
 	case SquirrelGame::eState::PlayerDead:
@@ -144,7 +168,7 @@ void SquirrelGame::Update(float dt)
 	{
 		auto enemy = Factory::Instance().Create<Actor>("acorn");
 		//acorn->transform.rotation = acorn->transform.rotation;
-		enemy->transform.position.x = 100.0;
+		enemy->transform.position.x = 200.0;
 		enemy->transform.position.y = 0.0;
 		m_scene->AddActor(std::move(enemy), true);
 	}
@@ -181,72 +205,6 @@ void SquirrelGame::Draw(Renderer& renderer)
 	}
 }
 
-void SquirrelGame::LoadActors()
-{
-	{
-		auto acorn = Factory::Instance().Create<Actor>("acorn");
-		//acorn->transform.rotation = acorn->transform.rotation;
-		acorn->transform.position.x = 700.0;
-		acorn->transform.position.y = 150.0;
-		m_scene->AddActor(std::move(acorn), true);
-
-		auto goldacorn = Factory::Instance().Create<Actor>("goldenacorn");
-		//acorn->transform.rotation = acorn->transform.rotation;
-		goldacorn->transform.position.x = 90.0;
-		goldacorn->transform.position.y = 150.0;
-		m_scene->AddActor(std::move(goldacorn), true);
-
-		auto goldacorn2 = Factory::Instance().Create<Actor>("goldenacorn");
-		//acorn->transform.rotation = acorn->transform.rotation;
-		goldacorn2->transform.position.x = 790.0;
-		goldacorn2->transform.position.y = 150.0;
-		m_scene->AddActor(std::move(goldacorn2), true);
-
-		auto tz_1 = Factory::Instance().Create<Actor>("turnzone");
-		tz_1->transform.position.x = 350.0;
-		tz_1->transform.position.y = 550.0;
-		m_scene->AddActor(std::move(tz_1), true);
-		auto tz_2 = Factory::Instance().Create<Actor>("turnzone");
-		tz_2->transform.position.x = 950.0;
-		tz_2->transform.position.y = 550.0;
-		m_scene->AddActor(std::move(tz_2), true);
-		auto tz_3 = Factory::Instance().Create<Actor>("turnzone");
-		tz_3->transform.position.x = 450.0;
-		tz_3->transform.position.y = 300.0;
-		m_scene->AddActor(std::move(tz_3), true);
-		auto tz_4 = Factory::Instance().Create<Actor>("turnzone");
-		tz_4->transform.position.x = 850.0;
-		tz_4->transform.position.y = 300.0;
-		m_scene->AddActor(std::move(tz_4), true);
-
-		auto pc_1 = Factory::Instance().Create<Actor>("PauseCollisionZone");
-		pc_1->transform.position.x = 0.0;
-		pc_1->transform.position.y = 170.0;
-		m_scene->AddActor(std::move(pc_1), true);
-		auto pc_2 = Factory::Instance().Create<Actor>("PauseCollisionZone");
-		pc_2->transform.position.x = 50.0;
-		pc_2->transform.position.y = 170.0;
-		m_scene->AddActor(std::move(pc_2), true);
-		auto pc_3 = Factory::Instance().Create<Actor>("PauseCollisionZone");
-		pc_3->transform.position.x = 100.0;
-		pc_3->transform.position.y = 170.0;
-		m_scene->AddActor(std::move(pc_3), true);
-
-		auto enemy = Factory::Instance().Create<Actor>("enemy");
-		enemy->transform.position.x = 450.0;
-		enemy->transform.position.y = 500.0;
-		m_scene->AddActor(std::move(enemy), true);
-		auto enemy2 = Factory::Instance().Create<Actor>("enemy");
-		enemy2->transform.position.x = 500.0;
-		enemy2->transform.position.y = 270.0;
-		m_scene->AddActor(std::move(enemy2), true);
-
-		auto shadow = Factory::Instance().Create<Actor>("shadow");
-		shadow->transform.position.x = 1000.0;
-		shadow->transform.position.y = 100.0;
-		m_scene->AddActor(std::move(shadow), true);
-	}
-}
 
 void SquirrelGame::OnPlayerDead(const Event& event)
 {
@@ -280,4 +238,118 @@ void SquirrelGame::OnAddPoints(const Event& event)
 	actor->GetComponent<TextComponent>()->SetText(sScore);
 	//m_scene->GetActo(sName);
 	//Scene::GetActor(sName);
+}
+
+
+
+
+
+
+void SquirrelGame::LoadActors()
+{
+	{
+		
+
+		
+
+		auto goldacorn2 = Factory::Instance().Create<Actor>("goldenacorn");
+		//acorn->transform.rotation = acorn->transform.rotation;
+		goldacorn2->transform.position.x = 790.0;
+		goldacorn2->transform.position.y = 150.0;
+		m_scene->AddActor(std::move(goldacorn2), true);
+
+		//turnzones
+		auto tz_1 = Factory::Instance().Create<Actor>("turnzone");
+		tz_1->transform.position.x = 350.0;
+		tz_1->transform.position.y = 550.0;
+		m_scene->AddActor(std::move(tz_1), true);
+		auto tz_2 = Factory::Instance().Create<Actor>("turnzone");
+		tz_2->transform.position.x = 950.0;
+		tz_2->transform.position.y = 550.0;
+		m_scene->AddActor(std::move(tz_2), true);
+		auto tz_3 = Factory::Instance().Create<Actor>("turnzone");
+		tz_3->transform.position.x = 450.0;
+		tz_3->transform.position.y = 300.0;
+		m_scene->AddActor(std::move(tz_3), true);
+		auto tz_4 = Factory::Instance().Create<Actor>("turnzone");
+		tz_4->transform.position.x = 850.0;
+		tz_4->transform.position.y = 300.0;
+		m_scene->AddActor(std::move(tz_4), true);
+
+		//pause collision zones
+		auto pc_1 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_1->transform.position.x = 64.0;
+		pc_1->transform.position.y = 225.0;
+		m_scene->AddActor(std::move(pc_1), true);
+		auto pc_2 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_2->transform.position.x = 192.0;
+		pc_2->transform.position.y = 225.0;
+		m_scene->AddActor(std::move(pc_2), true);
+		auto pc_3 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_3->transform.position.x = 256.0;
+		pc_3->transform.position.y = 225.0;
+		m_scene->AddActor(std::move(pc_3), true);
+
+		auto pc_4 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_4->transform.position.x = 464.0;
+		pc_4->transform.position.y = 105.0;
+		m_scene->AddActor(std::move(pc_4), true);
+		auto pc_5 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_5->transform.position.x = 792.0;
+		pc_5->transform.position.y = 105.0;
+		m_scene->AddActor(std::move(pc_5), true);
+
+		auto pc_6 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_6->transform.position.x = 522.0;
+		pc_6->transform.position.y = 355.0;
+		m_scene->AddActor(std::move(pc_6), true);
+		auto pc_7 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_7->transform.position.x = 650.0;
+		pc_7->transform.position.y = 355.0;
+		m_scene->AddActor(std::move(pc_7), true);
+		auto pc_8 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_8->transform.position.x = 778.0;
+		pc_8->transform.position.y = 355.0;
+		m_scene->AddActor(std::move(pc_8), true);
+		
+		auto pc_9 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_9->transform.position.x = 978.0;
+		pc_9->transform.position.y = 170.0;
+		m_scene->AddActor(std::move(pc_9), true);
+		auto pc_10 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_10->transform.position.x = 1106.0;
+		pc_10->transform.position.y = 170.0;
+		m_scene->AddActor(std::move(pc_10), true);
+		
+		auto pc_11 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_11->transform.position.x = 1086.0;
+		pc_11->transform.position.y = 370.0;
+		m_scene->AddActor(std::move(pc_11), true);
+		
+		auto pc_12 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_12->transform.position.x = 286.0;
+		pc_12->transform.position.y = 370.0;
+		m_scene->AddActor(std::move(pc_12), true);
+		auto pc_13 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		pc_13->transform.position.x = 166.0;
+		pc_13->transform.position.y = 370.0;
+		m_scene->AddActor(std::move(pc_13), true);
+
+		//enemies
+		auto enemy = Factory::Instance().Create<Actor>("enemy");
+		enemy->transform.position.x = 450.0;
+		enemy->transform.position.y = 500.0;
+		m_scene->AddActor(std::move(enemy), true);
+		auto enemy2 = Factory::Instance().Create<Actor>("enemy");
+		enemy2->transform.position.x = 500.0;
+		enemy2->transform.position.y = 270.0;
+		m_scene->AddActor(std::move(enemy2), true);
+
+
+		//shadow
+		auto shadow = Factory::Instance().Create<Actor>("shadow");
+		shadow->transform.position.x = 1000.0;
+		shadow->transform.position.y = 100.0;
+		m_scene->AddActor(std::move(shadow), true);
+	}
 }
