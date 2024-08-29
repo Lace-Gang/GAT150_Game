@@ -45,6 +45,7 @@ public:
 
 private:
 	std::unique_ptr<class Scene> m_scene;
+	std::unique_ptr<class Scene> m_scene_copy;
 	std::unique_ptr<class Scene> m_TitleScreen;
 	std::unique_ptr<class Scene> m_DeadScreen;
 	eState state = eState::Title;

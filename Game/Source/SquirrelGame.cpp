@@ -12,6 +12,7 @@ bool SquirrelGame::Initialize()
 
 	//innitializing the scene and all scene components
 	m_scene = std::make_unique<Scene>(m_engine);
+	m_scene_copy = std::make_unique<Scene>(m_engine);
 	m_DeadScreen = std::make_unique<Scene>(m_engine);
 	m_TitleScreen = std::make_unique<Scene>(m_engine);
 	//std::string sceneNames[] = { "Scenes/tilemap.json", "Scenes/squirrel_scene.json" };
@@ -110,7 +111,7 @@ void SquirrelGame::Update(float dt)
 
 		acorn_timer += dt;
 
-		if (acorn_timer > 4)
+		if (acorn_timer > 3)
 		{
 			acorn_timer = 0;
 			float probability = randomf(10);
@@ -168,7 +169,7 @@ void SquirrelGame::Update(float dt)
 	{
 		auto enemy = Factory::Instance().Create<Actor>("acorn");
 		//acorn->transform.rotation = acorn->transform.rotation;
-		enemy->transform.position.x = 200.0;
+		enemy->transform.position.x = 150.0;
 		enemy->transform.position.y = 0.0;
 		m_scene->AddActor(std::move(enemy), true);
 	}
@@ -323,17 +324,22 @@ void SquirrelGame::LoadActors()
 		
 		auto pc_11 = Factory::Instance().Create<Actor>("PauseCollisionZone");
 		pc_11->transform.position.x = 1086.0;
-		pc_11->transform.position.y = 370.0;
+		pc_11->transform.position.y = 415.0;
 		m_scene->AddActor(std::move(pc_11), true);
 		
 		auto pc_12 = Factory::Instance().Create<Actor>("PauseCollisionZone");
 		pc_12->transform.position.x = 286.0;
-		pc_12->transform.position.y = 370.0;
+		pc_12->transform.position.y = 415.0;
 		m_scene->AddActor(std::move(pc_12), true);
 		auto pc_13 = Factory::Instance().Create<Actor>("PauseCollisionZone");
 		pc_13->transform.position.x = 166.0;
-		pc_13->transform.position.y = 370.0;
+		pc_13->transform.position.y = 415.0;
 		m_scene->AddActor(std::move(pc_13), true);
+		
+		//auto pc_14 = Factory::Instance().Create<Actor>("PauseCollisionZone");
+		//pc_14->transform.position.x = 106.0;
+		//pc_14->transform.position.y = 610.0;
+		//m_scene->AddActor(std::move(pc_14), true);
 
 		//enemies
 		auto enemy = Factory::Instance().Create<Actor>("enemy");

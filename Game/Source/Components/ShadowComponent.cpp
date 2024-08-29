@@ -5,6 +5,8 @@
 #include "Components/Box2DPhysicsComponent.h"
 #include "Physics/RigidBody.h"
 #include "Components/TextureAnimationComponent.h"
+#include "Components/AudioComponent.h"
+
 #include <iostream>s
 
 FACTORY_REGISTER(ShadowComponent)
@@ -37,7 +39,6 @@ void ShadowComponent::Update(float dt)
 		owner->GetComponent<PhysicsComponent>()->EnableCollision();
 		collidable = true;
 		speed = storedSpeed;
-		std::cout << "fixed speed" << std::endl;
 	}
 
 	//if (!collidable && lastCollidable > 0.5 && lastJump > 0.5)
@@ -78,10 +79,12 @@ void ShadowComponent::OnCollisionEnter(Actor* actor)
 	if (actor->tag == "acorn")
 	{
 		actor->destroyed = true;
+		owner->GetComponent<AudioComponent>()->Play();
 	}
 	if (actor->tag == "goldenacorn")
 	{
 		actor->destroyed = true;
+		owner->GetComponent<AudioComponent>()->Play();
 	}
 
 }

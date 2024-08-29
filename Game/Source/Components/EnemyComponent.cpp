@@ -2,6 +2,8 @@
 
 #include "Engine.h"
 #include "Components/TextureAnimationComponent.h"
+#include "Components/AudioComponent.h"
+
 #include<iostream>
 
 
@@ -79,10 +81,12 @@ void EnemyComponent::OnCollisionEnter(Actor* actor)
 	if (actor->tag == "acorn")
 	{
 		actor->destroyed = true;
+		owner->GetComponent<AudioComponent>()->Play();
 	}
 	if (actor->tag == "goldenacorn")
 	{
 		actor->destroyed = true;
+		owner->GetComponent<AudioComponent>()->Play();
 	}
 
 }

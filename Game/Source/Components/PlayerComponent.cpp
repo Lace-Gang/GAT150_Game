@@ -3,6 +3,7 @@
 #include "Components/Box2DPhysicsComponent.h"
 #include "Physics/RigidBody.h"
 #include "Components/TextureAnimationComponent.h"
+#include "Components/AudioComponent.h"
 #include <iostream>s
 
 FACTORY_REGISTER(PlayerComponent)
@@ -36,6 +37,13 @@ void PlayerComponent::Update(float dt)
 	if (health <= 0)
 	{
 		animation->SetAnimation("die");
+		EVENT_NOTIFY(PlayerDead);
+		owner->destroyed;
+		return;
+	}
+
+	if (owner->transform.position.y > 2000)
+	{
 		EVENT_NOTIFY(PlayerDead);
 		owner->destroyed;
 		return;
@@ -91,17 +99,11 @@ void PlayerComponent::OnCollisionEnter(Actor* actor)
 		health -= 1;
 		EVENT_NOTIFY_DATA(PlayerChangeHealth, -1);
 	}
-	if (actor->tag == "water")
-	{
-		EVENT_NOTIFY_DATA(PlayerChangeHealth, -health);
-		health -= health;
-		animation->SetAnimation("die");
-	}
-	
 	if (actor->tag == "acorn")
 	{
 		actor->destroyed = true;
 		EVENT_NOTIFY_DATA(AddPoints, 100);
+		owner->GetComponent<AudioComponent>()->Play();
 	}
 	if (actor->tag == "goldenacorn")
 	{
@@ -110,13 +112,21 @@ void PlayerComponent::OnCollisionEnter(Actor* actor)
 		EVENT_NOTIFY_DATA(PlayerChangeHealth, 1);
 		EVENT_NOTIFY_DATA(AddPoints, 200);
 		std::cout << health << std::endl;
+		owner->GetComponent<AudioComponent>()->Play();
 	}
+	if (actor->tag == "water")
+	{
+		EVENT_NOTIFY_DATA(PlayerChangeHealth, -health);
+		health -= health;
+		animation->SetAnimation("die");
+	}
+	
 
 	if (actor->tag == "Ground")
 	{
 		//std::cout << "test 1" << std::endl;
-		if (actor->transform.position.y < owner->transform.position.y)
-		{
+		//if (actor->transform.position.y < owner->transform.position.y)
+		//{
 			//std::cout << "test 2" << std::endl;
 			//float placement = actor->transform.position.y - 100000;
 			//owner->transform.position.y += 1200;
@@ -126,7 +136,7 @@ void PlayerComponent::OnCollisionEnter(Actor* actor)
 			//	std::cout << "test 3" << std::endl;
 			//	owner->transform.position.y-=100;
 			//}
-		}
+		//}
 	}
 
 }
